@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+   
+
+
+        <form action="http://moralo.atwebpages.com/daw2022/insertar.php" method="get" id="validar">
+
+            <div class="container">
+
+
+            <div class="Ciclo">
+                <h3>¿Qué ciclo estás cursando?</h3>
+                <input type="radio" name="ciclo" id="idDam" value="DAM"> DAM<br>
+                <input type="radio" name="ciclo" id="idAsir" value="ASIR"> ASIR<br>
+                <input type="radio" name="ciclo" id="idSmr" value="SMR"> SMR<br>
+                <input type="radio" name="ciclo" id="idDaw" value="DAW"> DAW<br>
+                <input type="radio" name="ciclo" id="idFpb" value="FPB"> FPB<br>
+                <small id="smCiclo" class="text-muted"></small>
+            </div>
+
+
+            <div class="Modulos">
+                <h3>Módulos</h3>
+
+                <div class="checkboxin">
+                    <input type="checkbox" id="diw" name="diw" value="Diseño Interfaces Web"><br>
+                    <label for="diw">Diseño Interfaces Web</label>
+                </div>
+
+                <div class="checkboxin">
+                    <input type="checkbox" id="cliente" name="cliente" value="Desarrollo Entorno Cliente"><br>
+                    <label for="cliente">Desarrollo Entorno Cliente</label>
+                </div>
+
+                <div class="checkboxin">
+                    <input type="checkbox" id="servidor" name="servidor" value="Desarrollo Entorno Servidor"><br>
+                    <label for="servidor">Desarrollo Entorno Servidor</label>
+                </div>
+
+                <div class="checkboxin">
+                    <input type="checkbox" id="multiplataforma" name="multiplataforma"
+                        value="Desarrollo Interfaces Multiplataforma"><br>
+                    <label for="multiplataforma">Desarrollo Interfaces Multiplataforma</label>
+                </div>
+
+                <small id="smModulos" class="text-muted"></small>
+            </div>
+
+
+            <div>
+                <div class="Curso">
+                    <h3>Curso</h3>
+                    <select id="curso" name="curso">
+                        <option value="">Seleccione el curso</option>
+                        <option value="1º">1º</option>
+                        <option value="2º">2º</option>
+                    </select>
+                    <small id="smCurso" class="text-muted"></small>
+                </div>
+
+
+                <div class="Nombre">
+                    <h3>Nombre</h3>
+                    <input type="text" id="idNombre" name="nombre">
+                    <small id="smNombre" class="text-muted"></small>
+                </div>
+
+            </div>
+
+            
+
+
+            <div class="Boton">
+                <input type="submit" value="Enviar">
+            </div>
+
+        </div>
+
+        </form>
+
+  
+
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

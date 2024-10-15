@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+.claseMuestra{
+    padding:20px;
+    border:1px solid red;
+    margin:0 auto;
+    width: 50%;
+}
+.container {
+    border:1px solid black;
+    border-radius: 1rem;
+    margin: 50px auto;
+    padding: 1rem;
+    width: 70%;
+}
+
+.gallery {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding:1rem;
+}
+
+.gallery img {
+    margin: 0.5rem 0.5rem;
+    width: 15%;
+     border-radius: 50%; 
+}
+.ponerBorde{
+   border:5px solid red;
+}
+.quitarBorde{
+    border:none;
+}
+.desactivar{
+    pointer-events: none;
+    opacity: 0.5;
+}
+.botonEmpezar{
+    width: 10%;
+    font-size: 2em;
+    height: 1.5 em;
+    background-color: rgb(208, 233, 204);
+    border:2px solid rgb(225, 239, 209);
+}

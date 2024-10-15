@@ -1,0 +1,36 @@
+/* Alinear los divs principales de izquierda a derecha */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si la pantalla es pequeña */
+}
+
+
+/* Alinear el botón al final, ocupando el ancho completo */
+.Boton {
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    margin-top: 20px; /* Espacio entre el botón y los campos anteriores */
+}
+
+.Ciclo{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.Modulos{
+    padding-left: 50px;
+    padding-right: 200px;
+}
+#idNombre{
+    background-color:#e9effd;
+    padding:12px;
+    text-align: center;
+    
+}
+
+
+
+.checkboxin{
+    display: flex;
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Formulario de Registro</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="col-lg-8 m-auto d-block">   <!-- clases bootstrap para centrar los elementos-->
+
+            <h3>Formulario de Registro</h3>
+
+            <!-- Ajuste el método a POST para enviar datos de forma segura -->
+            <form action ="http://moralo.atwebpages.com/chatCamacho/noregistrados.php" method="POST" id="validar">
+
+                <div class="form-group">
+                    <label for="idUsuario">Usuario</label>
+                    <input type="text" name="idUsuario" id="idUsuario" class="form-control" placeholder="Teclea usuario" aria-describedby="helpId">
+                    <small id="smUsuario" class="text-muted"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="idCorreo">Correo</label>
+                  <input type="text" name="idCorreo" class="form-control" id="idCorreo" aria-describedby="emailHelp" placeholder="Introduce email">
+                  <small id="smEmail" class="form-text text-muted"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="idContrasena">Contraseña</label>
+                  <input type="password" name="idContrasena" class="form-control" id="idContrasena" placeholder="Introduce contraseña">
+                  <small id="smContrasena" class="form-text text-muted"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="idRepContrasena">Repetir Contraseña</label>
+                    <input type="password" name="idRepContrasena" class="form-control" id="idRepContrasena" placeholder="Repite la contraseña">
+                    <small id="smRepContrasena" class="form-text text-muted"></small>
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+
+
+                <div id="mensaje"></div>
+
+              </form>
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
