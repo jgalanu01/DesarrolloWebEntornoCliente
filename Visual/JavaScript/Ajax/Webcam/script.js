@@ -22,7 +22,7 @@ function mostrar(datos) {
 
         const videoWeb = document.createElement("video");
         videoWeb.setAttribute("src", webc.url);
-        videoWeb.setAttribute("autoplay", "true");
+        videoWeb.setAttribute("autoplay", "");
         videoWeb.setAttribute("loop", "");
     
         tarjeta.appendChild(videoWeb);
