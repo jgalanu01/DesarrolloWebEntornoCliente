@@ -23,15 +23,26 @@ function mostrar(datos) {
     fila.appendChild(ciudadNombre);
 
     const poblacion = document.createElement("td");
-    item.textContent = item.ciudad_poblacion;
+    poblacion.textContent = item.ciudad_poblacion;
     fila.appendChild(poblacion);
 
     const video = document.createElement("td");
     video.innerHTML = item.video;
     fila.appendChild(video);
 
-    const foto = document.createElement("td");
-    foto.setAttribute("src", item.imagen);
-    fila.appendChild(foto);
+    const tdfoto = document.createElement("td");
+    const img = document.createElement("img");
+    img.setAttribute("src", item.imagen);
+    img.setAttribute("width", "200px");
+    tdfoto.appendChild(img);
+    fila.appendChild(tdfoto);
+
+    const tdMapa = document.createElement("td");
+    tdMapa.innerHTML = item.mapa;
+    fila.appendChild(tdMapa);
+
+    const tdId = document.createElement("td");
+    tdId.textContent = item.ciudad_ID;
+    fila.appendChild(tdId);
   });
 }
