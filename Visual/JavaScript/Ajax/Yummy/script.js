@@ -1,67 +1,88 @@
-// URL local de los ficheros JSON
+window.addEventListener("load", inicio);
 
-const url = "getCocinero.php.json";
-const url2 = "getPlatos.php.json";
+const urlPlatos = "getPlatos.php.json";
+const urlCocineros = "getCocinero.php.json";
 
-//Arrays para cambiar en el menú
-const listaPanaderias = [
-  "Jesus",
-  "Almagro",
-  "Julia",
-  "Andalusi",
-  "JoseAntonio",
-  "el trigal",
-];
-const listaEnlaces = [
-  "panaderiajesus.com",
-  "panalmagro.es",
-  "panaderiasjulia.es",
-  "panaderialaandalusi.com",
-  "panaderiajoseantonio.com",
-  "eltrigal.com",
-];
+function inicio() {
+  numerosAlea();
 
-//Identificar contenedor donde van los datos
+  fetch(urlCocineros)
+    .then((response) => response.json())
+    .then((datos) => mostrarCocineros(datos))
+    .catch((error) => alert("error: " + error));
 
-const ubicacion = document.querySelector("tbody");
+  function mostrarCocineros(datos) {
+    console.log(datos);
 
-fetch(url)
-  .then((response) => response.json())
-  .then((datos) => mostrar(datos))
-  .catch((error) => alert("Error: " + error));
+    const tarjetasChef = document.querySelectorAll(".chef-member");
 
-//Realizar solicitud
+    datos.forEach((chef, index) => {
+      if (index < tarjetasChef.length) {
+        const imagenX = tarjetasChef[index].querySelector("img");
+        imagenX.setAttribute("src", chef.imagen);
 
-function mostrar(datos) {
-  datos.forEach((item) => {
-    const fila = document.createElement("tr");
-    ubicacion.appendChild(fila);
+        const nombre = tarjetasChef[index].querySelector(".member-info h4");
+        nombre.textContent = chef.nombre;
 
-    const ciudadNombre = document.createElement("td");
-    ciudadNombre.textContent = item.ciudad_nombre;
-    fila.appendChild(ciudadNombre);
+        const funcion = tarjetasChef[index].querySelector(".member-info span");
+        funcion.textContent = chef.funcion;
 
-    const poblacion = document.createElement("td");
-    poblacion.textContent = item.ciudad_poblacion;
-    fila.appendChild(poblacion);
+        const descripcion = tarjetasChef[index].querySelector(".member-info p");
+        descripcion.textContent = chef.descripcion;
+      }
+    });
+  }
 
-    const video = document.createElement("td");
-    video.innerHTML = item.video;
-    fila.appendChild(video);
+  fetch(urlPlatos)
+    .then((response) => response.json())
+    .then((datos) => mostrarPlatos(datos))
+    .catch((error) => alert("error: " + error));
 
-    const tdfoto = document.createElement("td");
-    const img = document.createElement("img");
-    img.setAttribute("src", item.imagen);
-    img.setAttribute("width", "200px");
-    tdfoto.appendChild(img);
-    fila.appendChild(tdfoto);
+  function mostrarPlatos(datos) {
+    console.log(datos);
+    const tarjetasPlato = document.querySelectorAll(".menu-item");
 
-    const tdMapa = document.createElement("td");
-    tdMapa.innerHTML = item.mapa;
-    fila.appendChild(tdMapa);
+    datos.forEach((plato, index) => {
+      if (index < tarjetasPlato.length) {
+        const imagenX = tarjetasPlato[index].querySelector("img");
+        imagenX.setAttribute("src", plato.imagen);
 
-    const tdId = document.createElement("td");
-    tdId.textContent = item.ciudad_ID;
-    fila.appendChild(tdId);
-  });
+        const nombre = tarjetasPlato[index].querySelector("h4");
+        nombre.textContent = plato.nombre;
+
+        const ingredientes = tarjetasPlato[index].querySelector(".ingredients");
+        ingredientes.textContent = plato.ingredientes;
+
+        const precio = tarjetasPlato[index].querySelector(".price");
+        precio.textContent = "$ " + plato.precio;
+      }
+    });
+  }
+}
+
+function numerosAlea() {
+  const contadores = document.querySelectorAll(".purecounter");
+  const parrafos = document.querySelectorAll(".stats-item p");
+
+  contadores[0].setAttribute(
+    "data-purecounter-end",
+    Math.floor(Math.random() * 2001)
+  );
+  contadores[1].setAttribute(
+    "data-purecounter-end",
+    Math.floor(Math.random() * 501)
+  );
+  contadores[2].setAttribute(
+    "data-purecounter-end",
+    Math.floor(Math.random() * 2001)
+  );
+  contadores[3].setAttribute(
+    "data-purecounter-end",
+    Math.floor(Math.random() * 201)
+  );
+
+  parrafos[0].textContent = "Clientes";
+  parrafos[1].textContent = "Projectos";
+  parrafos[2].textContent = "Horas de Soporte";
+  parrafos[3].textContent = "Trabajadores";
 }
