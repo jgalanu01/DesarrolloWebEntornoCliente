@@ -5,6 +5,53 @@ const urlCocineros = "getCocinero.php.json";
 
 function inicio() {
   numerosAlea();
+  menu();
+
+  /*function menu() {
+    // Cambiar "Home" por "Inicio"
+    const linkHome = document.querySelector('a[href="#hero"]');
+    linkHome.textContent = "Inicio";
+  
+    // Cambiar "About" por "Nosotros"
+    const linkAbout = document.querySelector('a[href="#about"]');
+    linkAbout.textContent = "Nosotros";
+  
+    // Cambiar "Menu" por "Carta"
+    const linkMenu = document.querySelector('a[href="#menu"]');
+    linkMenu.textContent = "Carta";
+  
+    // Cambiar "Events" por "Eventos"
+    const linkEvents = document.querySelector('a[href="#events"]');
+    linkEvents.textContent = "Eventos";
+  
+    // Cambiar "Chefs" por "Cocineros"
+    const linkChefs = document.querySelector('a[href="#chefs"]');
+    linkChefs.textContent = "Cocineros";
+  
+    // Cambiar "Gallery" por "Galería"
+    const linkGallery = document.querySelector('a[href="#gallery"]');
+    linkGallery.textContent = "Galería";
+  
+    // Cambiar "Contact" por "Contacto"
+    const linkContact = document.querySelector('a[href="#contact"]');
+    linkContact.textContent = "Contacto";
+  }
+    */
+
+  function menu() {
+    // Array con las traducciones en español
+    const traducciones = ["Inicio", "Nosotros", "Carta", "Eventos", "Cocineros", "Galería", "Contacto"];
+    
+    // Seleccionamos los enlaces del menú (los elementos <a> dentro de la navbar)
+    const enlacesMenu = document.querySelectorAll(".navbar a");
+  
+    // Recorrer los enlaces del menú y asignar las traducciones
+    enlacesMenu.forEach((enlace, index) => {
+      if (index < traducciones.length) {  // Para evitar sobrepasar el tamaño del array
+        enlace.textContent = traducciones[index];
+      }
+    });
+  }
 
   fetch(urlCocineros)
     .then((response) => response.json())
@@ -66,7 +113,7 @@ function numerosAlea() {
 
   contadores[0].setAttribute(
     "data-purecounter-end",
-    Math.floor(Math.random() * 2001)
+    Math.floor(Math.random() * 2001) //Genera un número entre 0 y 2000
   );
   contadores[1].setAttribute(
     "data-purecounter-end",
