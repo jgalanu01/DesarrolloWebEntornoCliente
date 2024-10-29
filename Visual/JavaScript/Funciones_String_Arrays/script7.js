@@ -1,5 +1,4 @@
 window.addEventListener('load', inicio);
-window.addEventListener('load', inicio);
 const cuerpo = document.body;
 const contenedor = cuerpo.querySelector(".col-lg-12")
 
