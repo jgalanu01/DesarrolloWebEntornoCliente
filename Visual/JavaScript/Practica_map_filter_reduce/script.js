@@ -34,6 +34,8 @@ function inicio() {
     const nombres = frutas.map(fruta => fruta.nombre)
     nombreFruta.textContent = "Listado de nombres de fruta: " + nombres.join(",")
     cajaPrincipal.appendChild(nombreFruta);
+    salto=document.createElement("br");
+    cajaPrincipal.appendChild(salto);
 
 
 
@@ -42,36 +44,92 @@ function inicio() {
     const frutasSinExistencias = document.createElement("small")
     frutasSinExistencias.textContent = "Frutas sin stock:" + nombresSinStock.join(",")
     cajaPrincipal.appendChild(frutasSinExistencias)
+    salto2=document.createElement("br")
+    cajaPrincipal.appendChild(salto2);
 
 
 
 
     //suma total del stock (reduce) :1485
+    const sumaTotalStock = frutas.reduce((suma, item) => suma + item.stock, 0);
+    const totalStock = document.createElement("small");
+    totalStock.textContent = "La suma total del stock es: " + sumaTotalStock;
+    cajaPrincipal.appendChild(totalStock)
+    salto3=document.createElement("br")
+    cajaPrincipal.appendChild(salto3);
 
 
 
 
 
 
-    //media de precios (recduce): 3.3 . Primero el total de medio y luego 
+    //media de precios (reduce): 3.3 . Primero el total de medio y luego 
     //divides entre frutas.length
+
+    
+    const sumaTotal = frutas.reduce((suma, item) => suma + item.precio, 0);
+    const media = (sumaTotal / frutas.length)
+
+
+    const precioMedio = document.createElement("small");
+    precioMedio.textContent = "La media de precios es: " + media;
+    cajaPrincipal.appendChild(precioMedio);
+    salto4=document.createElement("br")
+    cajaPrincipal.appendChild(salto4);
+
+    
 
 
     //productos cuyo precio está por encima de la media (5)
-    // 1. Calcular la media de precios con reduce
 
-
-    // 2. Filtrar los productos que están por encima de la media 
+    const productosPorEncimaMedia = frutas.filter(fruta => fruta.precio > media);
+    const productosPorEncima = document.createElement("small");
+    productosPorEncima.textContent = "Los productos con precio por encima de la media son: "
+     + productosPorEncimaMedia.map(fruta => fruta.nombre).join(", ");
+    cajaPrincipal.appendChild(productosPorEncima);
+    salto5=document.createElement("br")
+    cajaPrincipal.appendChild(salto5);
+ 
 
 
     //productos cuyo stock está por debajo de la media
-    // 1. Calcular la media del stock con reduce
+
+     // 1. Calcular la media del stock con reduce
+
+    const sumaStock=frutas.reduce((suma,item)=> suma + item.stock,0);
+    const mediaStock=(sumaStock/frutas.length)
+
+    const stockMedio=document.createElement("small");
+    stockMedio.textContent="La media de stock es:" + mediaStock;
+    cajaPrincipal.appendChild(stockMedio);
+    salto6=document.createElement("br");
+    cajaPrincipal.appendChild(salto6);
+
+      // 2. Filtrar las frutas con stock por debajo de la media (148.5) filter
+
+    const productosDebajoMedia = frutas.filter(fruta => fruta.stock < mediaStock);
+    const productosPorDebajo = document.createElement("small");
+    productosPorDebajo.textContent =  "Los productos con stock por debajo de la media son: " + 
+    productosDebajoMedia.map(fruta => fruta.nombre).join(", ");
+    cajaPrincipal.appendChild(productosPorDebajo);
+    salto7=document.createElement("br");
+    cajaPrincipal.appendChild(salto7);
+
+    
+    
+   
 
 
-    // 2. Filtrar las frutas con stock por debajo de la media (148.5) filter
+  
 
 
     // nombre de frutas cuyo precio es mayor o igual a 5 euros (piña,fresa)  filter y map
+
+    const frutasMenor5euros=frutas.filter(fruta=>fruta.precio>=5);
+    const frutasMenor=document.createElement("small");
+    frutasMenor.textContent="Las frutas cuyo precio son igual o mayor de 5 euros son:" 
+    +frutasMenor5euros.map(fruta=>fruta.nombre).join(", ");
+    cajaPrincipal.appendChild(frutasMenor);
 
 
 }
