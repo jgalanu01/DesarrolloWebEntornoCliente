@@ -1,0 +1,9 @@
+<div class="container">
+  <button (click)="aniadirFrutas()">Añadir Frutas *ngFor</button>
+  <input type="text" [(ngModel)]="nombreFruta" placeholder="Escribe nombre Frutas">
+
+  <p>Directiva[(ngModel)]:{{nombreFruta}}</p>
+  <ul *ngFor="let f of lista">
+    <li>{{f}}}</li>
+  </ul>
+</div>
