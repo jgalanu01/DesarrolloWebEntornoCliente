@@ -1,0 +1,41 @@
+.claseRojo {
+  color: red;
+}
+.claseAzul {
+  color: blue;
+}
+.claseVerde {
+  color: green;
+}
+.claseAmarillo {
+  color: yellow;
+}
+.clase12 {
+  font-size: 12px;
+}
+.clase16 {
+  font-size: 16px;
+}
+.clase20 {
+  font-size: 20px;
+}
+.clase24 {
+  font-size: 24px;
+}
+ .bg-rojo {
+  background-color: red;
+
+}
+.bg-azul {
+  background-color: blue;
+}
+.bg-verde {
+  background-color: green;
+}
+.bg-amarillo {
+  background-color: yellow;
+}
+.bg-gris {
+  background-color: gray;
+}
+
