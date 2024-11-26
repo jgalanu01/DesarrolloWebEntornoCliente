@@ -11,6 +11,6 @@ export class ServicioService {
   constructor(private httpClient: HttpClient) { }
 
   leerProductos(): Observable<ProductoModule[]> {
-    return this.httpClient.get<ProductoModule[]>('http://moralo.atwebpages.com/menuAjas/productos2/index.php');
+    return this.httpClient.get<ProductoModule[]>('http://moralo.atwebpages.com/menuAjax/productos2/index.php');
   }
 }
