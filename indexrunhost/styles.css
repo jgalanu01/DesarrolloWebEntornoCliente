@@ -1,103 +1,140 @@
+/* Estilos globales para asegurar una base consistente */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Estilos generales */
+/* Estilo general del body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #2c3e50; /* Fondo oscuro (gris oscuro) */
-    color: #ecf0f1; /* Texto claro para buen contraste */
+    background-color: #2c3e50; /* Fondo oscuro con tono azulado */
+    color: #ecf0f1; /* Texto claro */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    padding: 0 20px; /* Espaciado a los lados */
     margin: 0;
-    padding: 20px;
+    font-size: 16px; /* Tamaño base del texto */
 }
 
+/* Contenedor principal con fondo y bordes redondeados */
 .container {
     text-align: center;
     max-width: 900px;
     width: 100%;
-    padding: 30px;
-    background-color: #34495e; /* Color de fondo del contenedor, gris oscuro con tono azulado */
-    border-radius: 12px; /* Bordes redondeados */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra sutil pero pronunciada */
+    padding: 40px;
+    background-color: #34495e; /* Fondo gris con tono azulado */
+    border-radius: 16px; /* Bordes redondeados más suaves */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
 }
 
-/* Estilo del título */
+/* Título principal con estilo moderno */
 h1 {
-    color: #ecf0f1; /* Título claro */
-    margin-bottom: 40px;
-    font-size: 40px;
+    color: #ecf0f1;
+    margin-bottom: 30px;
+    font-size: 48px; /* Tamaño grande para destacar */
     font-weight: 700;
-    text-transform: uppercase; /* Título en mayúsculas */
-    letter-spacing: 3px; /* Mayor espaciado entre letras */
+    text-transform: uppercase; /* Mayúsculas para un toque moderno */
+    letter-spacing: 4px; /* Más espacio entre letras */
+    line-height: 1.2; /* Aumento de altura de línea para mayor legibilidad */
 }
 
-/* Estilo de los botones */
+/* Botones con estilo atractivo */
 .btn {
     display: inline-block;
-    margin: 15px;
-    padding: 15px 30px;
-    background-color: #2980b9; /* Azul oscuro para los botones */
-    color: #ecf0f1; /* Texto en blanco */
+    padding: 18px 35px;
+    background-color: #2980b9; /* Azul vibrante */
+    color: #ecf0f1; /* Texto blanco */
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600; /* Peso de fuente más fuerte */
-    transition: all 0.3s ease;
+    border-radius: 10px;
+    font-size: 20px; /* Fuente grande para mayor visibilidad */
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil en los botones */
-    text-transform: capitalize; /* Capitalización del texto */
+    text-transform: capitalize; /* Capitalización para mejor legibilidad */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra sutil */
 }
 
-/* Efectos de hover en los botones */
+/* Efectos al pasar el ratón por encima del botón */
 .btn:hover {
-    background-color: #1abc9c; /* Verde azulado en hover para contrastar con el azul */
-    transform: translateY(-4px); /* Efecto de elevación */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    background-color: #1abc9c; /* Cambio a verde azulado */
+    transform: translateY(-5px); /* Efecto de "elevación" */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Sombra más marcada */
 }
 
-/* Efecto cuando se hace clic en el botón */
+/* Efecto al hacer clic en el botón */
 .btn:active {
-    transform: translateY(0); /* Se elimina el efecto de elevación */
+    transform: translateY(0); /* Elimina el efecto de elevación */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más suave al hacer clic */
 }
 
-/* Contenedor de botones con distribución responsiva */
+/* Contenedor de los botones con disposición fluida */
 .buttons-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
     margin-top: 50px;
 }
 
-/* Estilo para el pie de página */
+/* Estilo del pie de página */
 footer {
     position: absolute;
     bottom: 20px;
     text-align: center;
     font-size: 14px;
-    color: #7f8c8d; /* Gris claro para el pie de página */
+    color: #7f8c8d; /* Gris claro */
     width: 100%;
 }
 
-/* Responsividad para dispositivos móviles */
+/* Media Queries para mayor responsividad */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 40px;
+    }
+    .btn {
+        padding: 14px 28px;
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 25px;
     }
 
     h1 {
-        font-size: 32px;
+        font-size: 32px; /* Reducir tamaño de fuente en dispositivos pequeños */
     }
 
     .btn {
-        padding: 12px 20px;
-        font-size: 16px;
+        padding: 12px 24px;
+        font-size: 16px; /* Tamaño más pequeño de botones */
+    }
+
+    footer {
+        font-size: 12px; /* Reducir tamaño de texto del pie de página */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Relleno más pequeño para pantallas muy pequeñas */
+    }
+
+    h1 {
+        font-size: 28px; /* Asegurarse de que el título sea legible */
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px; /* Botones más pequeños */
+    }
+
+    footer {
+        font-size: 10px; /* Font-size aún más pequeño en pantallas pequeñas */
     }
 }
