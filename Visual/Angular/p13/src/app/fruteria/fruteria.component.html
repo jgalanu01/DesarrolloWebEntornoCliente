@@ -1,7 +1,7 @@
 <div class="container">
   <!-- Fila para colocar las columnas al lado -->
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
       <!-- Tabla de productos -->
       <table class="table table-striped table-bordered">
         <thead>
@@ -9,6 +9,7 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Unidades</th>
             <th>Imagen</th>
             <th>Modificar</th>
             <th>Eliminar</th>
@@ -19,15 +20,17 @@
             <td>{{ f.id }}</td>
             <td>{{ f.nombre }}</td>
             <td>{{ f.precio }}</td>
+            <td>{{ f.unidades }}</td>
             <td><img src="{{ f.imagen }}" width="50" height="50"></td>
-            <td><a href="" class="btn btn-info">Modificar</a></td>
-            <td><a href="" class="btn btn-danger">Eliminar</a></td>
+            <td><button (click)="seleccionarProductos(f)" class="btn btn-info">Modificar</button></td>
+            <td><button (click)="eliminar(f.id)" class="btn btn-danger">Eliminar</button></td>
+
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <!-- Formulario de entrada de datos -->
       <form #f="ngForm">
         <div class="form-group">
@@ -50,8 +53,10 @@
           <label for="imagen">IMAGEN</label>
           <input [(ngModel)]="frutaSeleccionada.imagen" type="text" name="imagen" id="imagen" class="form-control" placeholder="Teclea imagen">
         </div>
-        <button (click)="AniadirProducto()" class="btn btn-info">Crear Producto</button>
-        <button (click)="ActualizarProducto()" class="btn btn-info">Actualizar Producto</button>
+        <button (click)="AniadirProducto(f)" class="btn btn-info">Crear Producto</button>
+        <button (click)="ActualizarProducto(f)" class="btn btn-info">Actualizar Producto</button>
+        <button (click)="resetearFormulario()" class="btn btn-danger">Resetear Formulario</button>
+        <p>{{mensajes}}</p>
       </form>
     </div>
   </div>

@@ -9,6 +9,41 @@ import { ServFrutaService } from '../serv-fruta.service';
   styleUrls: ['./fruteria.component.css']
 })
 export class FruteriaComponent {
+mensajes: any;
+resetearFormulario() {
+throw new Error('Method not implemented.');
+}
+
+  //Método seleccionar producto para actualizarlo después. Precarga en el formulario los valores actuales.
+
+seleccionarProductos(f:FrutaModule){
+  this.frutaSeleccionada=f;
+
+}
+
+//Método que llama al servicio modificar (seleccionarProductos)
+ActualizarProducto(f:{value:FrutaModule}) {
+  this.httpFruta.actualizarFruta(f.value).
+  subscribe((f:FrutaModule)=>{this.fruta=f;
+  //despues de modificar refrescar pantalla
+  this.httpFruta.leerFrutas().subscribe(x=>this.listaFrutas=x)
+
+})
+
+}
+
+  //Método eliminar
+
+  eliminar (id:number){
+    this.httpFruta.eliminarFruta(id).
+    subscribe((x:FrutaModule)=>{
+      this.fruta=x;
+      //refrescar pantalla
+      this.httpFruta.leerFrutas().subscribe(x=>this.listaFrutas=x)
+    });
+  }
+
+
   fruta!: FrutaModule;
   frutaSeleccionada: FrutaModule={
     id:0,
@@ -17,10 +52,16 @@ export class FruteriaComponent {
     unidades:0,
     imagen:''
   }
-ActualizarProducto() {
 
-}
-AniadirProducto() {
+
+
+//Insertar producto
+AniadirProducto(form:{value:FrutaModule;}) {
+  this.httpFruta.crearFruta(form.value).subscribe((p:FrutaModule)=>{this.fruta=p;
+    this.httpFruta.leerFrutas().subscribe(x=>this.listaFrutas=x)
+  });
+
+
 
 }
   listaFrutas!: FrutaModule[];

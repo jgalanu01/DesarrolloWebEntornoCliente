@@ -8,9 +8,30 @@ import { FrutaModule } from './fruta/fruta.module';
 })
 export class ServFrutaService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+
+  }
+
+  crearFruta(fruta: FrutaModule): Observable<FrutaModule> {
+    return this.httpClient.post<FrutaModule>
+    ('http://moralo.atwebpages.com/menuAjax/productos2/create_product.php', fruta);
+
+  }
+  actualizarFruta(fruta: FrutaModule){
+    return this.httpClient.put<FrutaModule>
+    ('http://moralo.atwebpages.com/menuAjax/productos2/update_product.php', fruta);
+
+
+  }
+  eliminarFruta(id: number) {
+    return this.httpClient.delete<FrutaModule>
+    ('http://moralo.atwebpages.com/menuAjax/productos2/delete_product.php?id=' + id);
+
+  }
+
     leerFrutas():Observable<FrutaModule[]>{
-      return this.httpClient.get<FrutaModule[]>('http://moralo.atwebpages.com/menuAjax/productos2/index.php');
+      return this.httpClient.get<FrutaModule[]>
+      ('http://moralo.atwebpages.com/menuAjax/productos2/index.php');
   }
 }
 
