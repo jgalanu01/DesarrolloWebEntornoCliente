@@ -9,4 +9,11 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class ChatModule { }
+export class ChatModule {
+  
+    id:number=0;
+    fecha:string='';
+    usuario:string=''
+    mensaje:string=''
+
+}
