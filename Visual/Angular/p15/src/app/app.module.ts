@@ -12,6 +12,7 @@ import { ListadoEmpleadoComponent } from './listado-empleado/listado-empleado.co
 import { CuadroDialogoComponent } from './cuadro-dialogo/cuadro-dialogo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
