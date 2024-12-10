@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Fruta": {
+    "Futbolistas": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fruta",
+            "outputPath": "dist/futbolistas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Fruta:build:production"
+              "browserTarget": "Futbolistas:build:production"
             },
             "development": {
-              "browserTarget": "Fruta:build:development"
+              "browserTarget": "Futbolistas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Fruta:build"
+            "browserTarget": "Futbolistas:build"
           }
         },
         "test": {
@@ -98,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "7936dbb8-bc6d-4e2f-b4f3-fb953c586831"
+    "analytics": "00046167-6180-470f-8325-9fbd7140caae"
   }
 }
