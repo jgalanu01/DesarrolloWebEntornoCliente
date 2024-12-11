@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./coliflor.component.css']
 })
 export class ColiflorComponent {
+EventoTraducir() {
+if(this.entradaNumero=1)
+
+}
+entradaNumero: any;
 
 }

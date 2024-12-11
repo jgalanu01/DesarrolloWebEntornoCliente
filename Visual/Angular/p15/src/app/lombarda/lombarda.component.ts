@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./lombarda.component.css']
 })
 export class LombardaComponent {
+  colores=['Red','Blue','Green','Yellow'];
+  puntuacion=0;
+color: any;
+tamanioF: any;
 
 }
