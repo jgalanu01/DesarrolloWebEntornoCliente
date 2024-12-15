@@ -19,15 +19,15 @@ export class ListadoNumerosComponent implements OnInit {
   //Columnas
 
   columnas: string[]=[
-    'id',
-    'N1',
-    'N2',
-    'N3',
-    'N4',
-    'N5',
-    'N6',
-    'ELIMINAR',
-    'MODIFICAR',
+    'indice',
+    'n1',
+    'n2',
+    'n3',
+    'n4',
+    'n5',
+    'n6',
+    'eliminar',
+    'modificar',
   ];
 
   @ViewChild(MatPaginator)paginator!:MatPaginator;
@@ -86,14 +86,13 @@ export class ListadoNumerosComponent implements OnInit {
 
   abrirDialogoModificar(numero: ClaseNumero) {
     const dialogo1 = this.dialog.open(AniadirComponent, {
-      data: { ...numero },
+      data: { ...numero }, // Pasar una copia del objeto para editarlo
     });
 
-    // Se ejecuta al cerrar el diálogo
     dialogo1.afterClosed().subscribe((numeroEditado: ClaseNumero) => {
       if (numeroEditado) {
-        this.servicio.editTupla(numeroEditado);
-        this.actualizarDataSource();
+        this.servicio.editTupla(numero, numeroEditado); // Pasar el objeto original y el editado
+        this.actualizarDataSource(); // Refrescar la tabla
       }
     });
   }

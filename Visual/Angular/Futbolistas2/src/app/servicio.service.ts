@@ -29,10 +29,10 @@ export class ServicioService {
   }
 
   // Edita un futbolista existente
-  editFutbolista(futbolista: Futbolista): void {
-    const index = this.futbolistas.findIndex(f => f.id === futbolista.id); // Busca el índice del futbolista
+  editFutbolista(futbolistaOriginal: Futbolista, futbolistaEditado: Futbolista): void {
+    const index = this.futbolistas.indexOf(futbolistaOriginal); // Buscar por referencia del objeto original
     if (index !== -1) {
-      this.futbolistas[index] = futbolista; // Actualiza los datos
+      this.futbolistas[index] = futbolistaEditado; // Reemplazar la fila completa
     }
   }
 

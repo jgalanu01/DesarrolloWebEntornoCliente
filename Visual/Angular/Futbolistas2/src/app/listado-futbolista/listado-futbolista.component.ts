@@ -86,15 +86,13 @@ export class ListadoFutbolistaComponent implements OnInit {
   // Abre el diálogo para modificar un futbolista existente
   abrirDialogoModificar(futbolista: Futbolista) {
     const dialogo1 = this.dialog.open(AniadirComponent, {
-      data: { ...futbolista }, // Pasa una copia del objeto seleccionado
+      data: { ...futbolista }, // Pasar una copia del objeto para editarlo
     });
 
-    // Se ejecuta al cerrar el diálogo
     dialogo1.afterClosed().subscribe((futbolistaEditado: Futbolista) => {
       if (futbolistaEditado) {
-        // Si el usuario confirma
-        this.servicio.editFutbolista(futbolistaEditado); // Actualiza el futbolista en el array del servicio
-        this.actualizarDataSource();
+        this.servicio.editFutbolista(futbolista, futbolistaEditado); // Actualiza pasando el objeto original y el editado
+        this.actualizarDataSource(); // Refresca la tabla
       }
     });
   }
