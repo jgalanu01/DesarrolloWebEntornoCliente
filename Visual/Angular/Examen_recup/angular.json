@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "p15": {
+    "Examen_recup": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/p15",
+            "outputPath": "dist/examen-recup",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "p15:build:production"
+              "browserTarget": "Examen_recup:build:production"
             },
             "development": {
-              "browserTarget": "p15:build:development"
+              "browserTarget": "Examen_recup:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "p15:build"
+            "browserTarget": "Examen_recup:build"
           }
         },
         "test": {
@@ -98,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "e0b89880-1804-413e-9529-e85d166afc03"
+    "analytics": "6df08b80-51d0-4a5e-8b2f-59f1db05bc9d"
   }
 }
