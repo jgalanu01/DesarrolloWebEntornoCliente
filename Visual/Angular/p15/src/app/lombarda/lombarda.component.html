@@ -1,11 +1,6 @@
-<p>Lombarda</p>
-
-<p>Suma 1 punto si coincide el nombre del color y el color de fondo</p>
-<p>puntos:{{puntuacion}}</p>
-
-<div class="col-lg-8">
-  <div [style.backgroundColor]="color">
-
+<h1>Lombarda</h1>
+<div style="padding: 60px;" [ngStyle]="{ 'background-color': color}" (click)="jugar()">
+  {{colorTexto}}
 </div>
-
-</div>
+<button class="btn btn-danger" (click)="generarColorRandom()">Jugar</button>
+<p>Puntos = {{puntos}}</p>

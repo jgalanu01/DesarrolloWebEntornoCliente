@@ -3,12 +3,12 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu brásicas</mat-toolbar>
+    <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/brecol">Brocoli</a> <!--En routerLink usamos los nombres que hemos puesto en los path de a "app-routing.module.ts"-->
-      <a mat-list-item routerLink="/repollo">Col Berza</a> <!--En routerLink usamos los nombres que hemos puesto en los path de a "app-routing.module.ts"-->
-      <a mat-list-item routerlink="/lombarda">Lombarda</a> <!--En routerLink usamos los nombres que hemos puesto en los path de a "app-routing.module.ts"-->
-      <a mat-list-item routerlink="/coliflor">Coliflor</a> <!--En routerLink usamos los nombres que hemos puesto en los path de a "app-routing.module.ts"-->
+      <a mat-list-item routerLink="/brecol">Brecol</a>
+      <a mat-list-item routerLink="/coliflor">Coliflor</a>
+      <a mat-list-item routerLink="/lombarda">Lombarda</a>
+      <a mat-list-item routerLink="/repollo">Repollo</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,9 +21,10 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Menú material</span>
+      <span>Menu-Material</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet> <!-- Aquí agregamos el router-outlet Punto inicio del examen.-->
+    <!--Añadir los contnidos de cada item -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

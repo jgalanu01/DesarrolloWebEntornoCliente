@@ -6,10 +6,22 @@ import { LombardaComponent } from './lombarda/lombarda.component';
 import { RepolloComponent } from './repollo/repollo.component';
 
 const routes: Routes = [
-  {path:'brecol', component:BrecolComponent},
-  {path:'coliflor', component:ColiflorComponent},
-  {path:'lombarda', component:LombardaComponent},
-  {path:'repollo', component:RepolloComponent}
+  {
+    path : 'brecol',
+    component : BrecolComponent
+  },
+  {
+    path : 'coliflor',
+    component : ColiflorComponent
+  },
+  {
+    path : 'lombarda',
+    component : LombardaComponent
+  },
+  {
+    path : 'repollo',
+    component : RepolloComponent
+  }
 ];
 
 @NgModule({

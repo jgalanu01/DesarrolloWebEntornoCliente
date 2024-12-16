@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row text-center">
+    <h1>Chat</h1>
+    <div class="formulario">
+      <form #f="ngForm">
+        <label for="usuario">Usuario</label>
+        <input type="text" placeholder="Introduce el usuario" name="usuario" id="usuario" [(ngModel)]="mensaje.usuario"> <br>
+        <label for="mensaje">Mensaje</label>
+        <input type="text" placeholder="Introduce el mensaje" name="mensaje" id="mensaje" [(ngModel)]="mensaje.mensaje"> <br>
+
+        <button type="submit" class="btn btn-info" (click)="aniadirMensaje(f)">Añadir Mensaje</button>
+        <button type="submit" class="btn btn-warning" (click)="leerMensajes()">Leer Mensajes</button>
+        <button type="submit" class="btn btn-danger" (click)="eliminarTodos()">Eliminar todos los mensajes</button>
+      </form>
+    </div>
+  </div>
+  <div class="row text-center">
+    <table class="table">
+      <thead>
+        <th>Id</th>
+        <th>Fecha</th>
+        <th>Usuario</th>
+        <th>Mensaje</th>
+        <th>Eliminar</th>
+      </thead>
+      <tbody *ngFor="let mensaje of listaMensajes">
+        <tr>
+          <td>{{ mensaje.id }}</td>
+          <td>{{ mensaje.fecha }}</td>
+          <td>{{ mensaje.usuario}}</td>
+          <td>{{ mensaje.mensaje }}</td>
+          <td><button type="submit" class="btn btn-danger" (click)="eliminarMensaje(mensaje.id)">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

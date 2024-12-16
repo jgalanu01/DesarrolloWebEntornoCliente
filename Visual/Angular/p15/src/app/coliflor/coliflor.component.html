@@ -1,8 +1,6 @@
-<p>Coliflor</p>
-<b>Conversor de números a texto(ESP/ENG)</b>
+<h1>Brecol</h1>
+<div style="padding: 60px;" [ngStyle]="{ 'background-color': color}">
 
-<div class="contaienr">
-  <p>Teclea un número entre 1 y 10</p>
-  <input type="number" [(ngModel)]="entradaNumero"  (ngModelChange)="EventoTraducir()">
 </div>
-
+<button (click)="generarColorRandom()">Color Random:</button>
+<button (click)="parar()">Parar</button>
