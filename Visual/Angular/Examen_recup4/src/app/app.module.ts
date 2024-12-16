@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 // Angular Material Modules
 import { MatTableModule } from '@angular/material/table';
@@ -18,16 +17,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 // Components
-
 import { ListadoFrutasComponent } from './listado-frutas/listado-frutas.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoFrutasComponent,
-    FormsModule,
-
+    ListadoFrutasComponent, // Aquí solo componentes
   ],
   imports: [
     BrowserModule,
