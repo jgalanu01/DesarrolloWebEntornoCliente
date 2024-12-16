@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "nombre": "Lionel Messi",
+    "posicion": "Delantero",
+    "equipo": "Inter Miami",
+    "goles": 40
+  },
+  {
+    "id": "2",
+    "nombre": "Cristiano Ronaldo",
+    "posicion": "Delantero",
+    "equipo": "Al-Nassr",
+    "goles": 45
+  },
+  {
+    "id": "3",
+    "nombre": "Kylian Mbappé",
+    "posicion": "Delantero",
+    "equipo": "PSG",
+    "goles": 50
+  }
+]
+

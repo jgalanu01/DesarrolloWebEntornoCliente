@@ -1,0 +1,36 @@
+<div>
+  <h1 mat-dialog-title>Añadir/Modificar Futbolista</h1>
+  <div mat-dialog-content>
+    <div class="contenedor">
+      <!-- Campo ID -->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.id" type="text" placeholder="Inserta ID">
+      </mat-form-field>
+
+      <!-- Campo Nombre -->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.nombre" type="text" placeholder="Inserta nombre">
+      </mat-form-field>
+
+      <!-- Campo Posición -->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.posicion" type="text" placeholder="Inserta posición">
+      </mat-form-field>
+
+      <!-- Campo Equipo -->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.equipo" type="text" placeholder="Inserta equipo">
+      </mat-form-field>
+
+      <!-- Campo Goles -->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.goles" type="number" placeholder="Inserta goles">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
+  </div>
+</div>
