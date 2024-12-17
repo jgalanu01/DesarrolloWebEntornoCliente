@@ -17,12 +17,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 // Components
-import { ListadoImagenesComponent } from './listado-imagenes/listado-imagenes.component';
+import { ListadoProductosComponent } from './listado-productos/listado-productos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoImagenesComponent,
+    ListadoProductosComponent,
   ],
   imports: [
     BrowserModule,
