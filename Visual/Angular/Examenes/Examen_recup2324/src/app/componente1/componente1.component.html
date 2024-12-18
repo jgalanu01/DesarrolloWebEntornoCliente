@@ -1,0 +1,9 @@
+<div>
+  <button
+    *ngFor="let button of buttons; let i = index"
+    class="btn m-1"
+    [ngClass]="currentColor"
+    (click)="changeColor(colors[i])">
+    {{ button }}
+  </button>
+</div>

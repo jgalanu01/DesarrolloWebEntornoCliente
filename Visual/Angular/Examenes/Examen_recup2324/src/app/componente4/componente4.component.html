@@ -1,0 +1,18 @@
+<div>
+  <input type="text" [(ngModel)]="name" placeholder="Introduce un nombre" class="form-control mb-2">
+  <button class="btn btn-primary m-1" (click)="addName()">Agregar</button>
+</div>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let name of names; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ name }}</td>
+    </tr>
+  </tbody>
+</table>
