@@ -6,10 +6,10 @@ import Pie from "./componentes/Pie";
 function App() {
   return (
     <>
-      <Cabecera />
+      <Cabecera/>
       <h2>Principal</h2>
-      <Botones />
-      <Pie />
+      <Botones/>
+      <Pie/>
     </>
   );
 }
