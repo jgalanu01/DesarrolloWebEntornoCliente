@@ -6,31 +6,36 @@ import "./estilo.css";
 function App() {
   const [mensajeHortaliza, setMensajeHortaliza] = useState("");
   const [respuestaHortaliza, setRespuestaHortaliza] = useState("");
-  const [peticionesSemilleros, setPeticionesSemilleros] = useState(0);
+  const [semillerosHortaliza, setSemillerosHortaliza] = useState(0);
 
   const [mensajeFrutal, setMensajeFrutal] = useState("");
   const [respuestaFrutal, setRespuestaFrutal] = useState("");
-  const [peticionesPlantones, setPeticionesPlantones] = useState(0);
+  const [plantonesFrutal, setPlantonesFrutal] = useState(0);
+
+  //datos de Hortaliza
+  const PedirSemillasDesdeHortaliza = (e) => {
+    setSemillerosHortaliza(e);
+  };
+
+  // datos de Frutal
+  const PedirPlantonesDesdeFrutal = (e) => {
+    setPlantonesFrutal(e);
+  };
 
   return (
     <div>
-      {/* Sección Huerto */}
+      {/* Huerto */}
       <div className="huerto">
         <h1>Huerto</h1>
-        <div>
-          <p>Mensaje de huerto para hortaliza:</p>
-          <input
-            type="text"
-            value={mensajeHortaliza}
-            onChange={(e) => setMensajeHortaliza(e.target.value)}
-          />
-        </div>
+        <p>Mensaje de huerto para hortaliza:</p>
+        <input
+          type="text"
+          value={mensajeHortaliza}
+          onChange={(e) => setMensajeHortaliza(e.target.value)}
+        />
         <p>Hortaliza dice a huerto: {respuestaHortaliza}</p>
-        <p>Peticiones de Hortaliza (semilleros) a huerto: {peticionesSemilleros}</p>
-      </div>
+        <p>Peticiones de Hortaliza (semilleros) a huerto: {semillerosHortaliza}</p>
 
-      {/* Comunicación entre Huerto y Frutal */}
-      <div className="huerto-frutal">
         <p>Mensaje huerto para Frutal:</p>
         <input
           type="text"
@@ -38,25 +43,21 @@ function App() {
           onChange={(e) => setMensajeFrutal(e.target.value)}
         />
         <p>Frutal dice a huerto: {respuestaFrutal}</p>
-        <p>Peticiones de Frutal (plantones) a huerto: {peticionesPlantones}</p>
+        <p>Peticiones de Frutal (plantones) a huerto: {plantonesFrutal}</p>
       </div>
 
-      {/* Sección Hortaliza */}
+      {/* Hortaliza */}
       <Hortaliza
         mensajeHuerto={mensajeHortaliza}
         enviarMensajeHuerto={setRespuestaHortaliza}
-        generarSemilleros={() =>
-          setPeticionesSemilleros(Math.floor(Math.random() * 100))
-        }
+        PedirSemillasDesdeHortaliza={PedirSemillasDesdeHortaliza}
       />
 
-      {/* Sección Frutal */}
+      {/* Frutal */}
       <Frutal
         mensajeHuerto={mensajeFrutal}
         enviarMensajeHuerto={setRespuestaFrutal}
-        generarPlantones={() =>
-          setPeticionesPlantones(Math.floor(Math.random() * 100))
-        }
+        PedirPlantonesDesdeFrutal={PedirPlantonesDesdeFrutal}
       />
     </div>
   );
