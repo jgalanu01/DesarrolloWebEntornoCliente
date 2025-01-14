@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-auto">
+      <form [formGroup]="FRegistro" (ngSubmit)="comprobar()">
+        <!-- Campo Email -->
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="micorreo@gmail.com">
+          <mat-error *ngIf="FRegistro.get('email')?.hasError('email')">
+            Teclea una cuenta de mail válida
+          </mat-error>
+          <mat-error *ngIf="FRegistro.get('email')?.hasError('required')">
+            Este campo es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <!-- Campo Fecha -->
+        <mat-form-field appearance="fill">
+          <mat-label>Selecciona una fecha de nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="cumple" placeholder="MM/DD/YYYY">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="FRegistro.get('cumple')?.hasError('required')">
+            Fecha de nacimiento no válida
+          </mat-error>
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <!-- Campo Trabajo -->
+        <mat-form-field appearance="fill">
+          <mat-label>Trabajos</mat-label>
+          <select matNativeControl formControlName="trabajo" required>
+            <option value="" disabled selected>Selecciona un trabajo</option>
+            <option value="analista">Analista</option>
+            <option value="tester">Tester</option>
+            <option value="desarrollador">Desarrollador</option>
+            <option value="front">Diseñador Front</option>
+          </select>
+          <mat-error *ngIf="FRegistro.get('trabajo')?.hasError('required')">
+            Este campo es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <!-- Campo Password -->
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Contraseña">
+          <mat-error *ngIf="FRegistro.get('password')?.hasError('required')">
+            Password requerida
+          </mat-error>
+          <mat-error *ngIf="FRegistro.get('password')?.hasError('pattern')">
+            Password no válida. Debe iniciar con mayúscula y tener al menos 8 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <!-- Botón Validar -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="FRegistro.invalid">
+          Validar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
