@@ -1,0 +1,59 @@
+<form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+  <div>
+    <label for="soloLetras">Solo letras:</label>
+    <input id="soloLetras" formControlName="soloLetras" placeholder="Escribe solo letras">
+    <div *ngIf="formulario.get('soloLetras')?.invalid && formulario.get('soloLetras')?.touched">
+      <small *ngIf="formulario.get('soloLetras')?.hasError('pattern')">El formato del campo es inválido</small>
+    </div>
+  </div>
+
+
+<div>
+  <label for="soloNumeros">Solo Números</label>
+  <input id="soloNumeros" formControlName="soloNumeros" placeholder="Escribe solo números">
+  <div *ngIf="formulario.get('soloNumeros')?.invalid && formulario.get('soloNumeros')?.touched">
+    <small *ngIf="formulario.get('soloNumeros')?.hasError('pattern')">El formato del campo es inválido</small>
+  </div>
+</div>
+
+
+<div>
+  <label for="soloLetrasMayusculas">Solo letras mayúsculas</label>
+  <input id="soloLetrasMayusculas" formControlName="soloLetrasMayusculas" placeholder="Escribe solo letras mayúsculas">
+  <div *ngIf="formulario.get('soloLetrasMayusculas')?.invalid && formulario.get('soloLetrasMayusculas')?.touched">
+    <small *ngIf="formulario.get('soloLetrasMayusculas')?.hasError('pattern')">El formato del campo es inválido</small>
+  </div>
+  </div>
+
+
+  <div>
+    <label for="rangoNumerico">Número entre 100 y 200</label>
+    <input id="rangoNumerico" formControlName="rangoNumerico" placeholder="Escribe un número entre 100 y 200">
+    <div *ngIf="formulario.get('rangoNumerico')?.invalid && formulario.get('rangoNumerico')?.touched">
+      <small *ngIf="formulario.get('rangoNumerico')?.hasError('pattern')">No es un número entre 100 y 200</small>
+    </div>
+</div>
+
+
+<div>
+  <label for="cincoDigitos">Número de cinco dígitos</label>
+  <input id="cincoDigitos" formControlName="cincoDigitos" placeholder="Escribe un número de cinco dígitos">
+  <div *ngIf="formulario.get('cincoDigitos')?.invalid && formulario.get('cincoDigitos')?.touched">
+    <small *ngIf="formulario.get('cincoDigitos')?.hasError('pattern')">El número de cinco dígitos es inválido</small>
+</div>
+</div>
+
+
+
+<div>
+  <label for="letras">Exactamente 10 letras</label>
+  <input id="letras" formControlName="letras" placeholder="Escribe">
+  <div *ngIf="formulario.get('letras')?.invalid && formulario.get('letras')?.touched">
+    <small *ngIf="formulario.get('letras')?.hasError('pattern')">El número de letras es inválido</small>
+</div>
+</div>
+
+
+
+  <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+</form>

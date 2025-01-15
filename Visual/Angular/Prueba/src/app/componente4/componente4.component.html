@@ -1,0 +1,51 @@
+<form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+  <div>
+    <label for="visa">Visa:</label>
+    <input id="visa" formControlName="visa" placeholder="Teclea tu Visa">
+    <div *ngIf="formulario.get('visa')?.invalid && formulario.get('visa')?.touched">
+      <small *ngIf="formulario.get('visa')?.hasError('pattern')">El número de tarjeta es inválido</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="masterCard">MasterCard:</label>
+    <input id="masterCard" formControlName="masterCard" placeholder="Teclea tu MasterCard">
+    <div *ngIf="formulario.get('masterCard')?.invalid && formulario.get('masterCard')?.touched">
+      <small *ngIf="formulario.get('masterCard')?.hasError('pattern')">El número de tarjeta es inválido</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="americanExpress">American Express:</label>
+    <input id="americanExpress" formControlName="americanExpress" placeholder="Teclea tu American Express">
+    <div *ngIf="formulario.get('americanExpress')?.invalid && formulario.get('americanExpress')?.touched">
+      <small *ngIf="formulario.get('americanExpress')?.hasError('pattern')">El número de tarjeta es inválido</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="discover">Discover:</label>
+    <input id="discover" formControlName="discover" placeholder="Teclea tu Discover">
+    <div *ngIf="formulario.get('discover')?.invalid && formulario.get('discover')?.touched">
+      <small *ngIf="formulario.get('discover')?.hasError('pattern')">El número de tarjeta es inválido</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="dinersClub">Diners Club:</label>
+    <input id="dinersClub" formControlName="dinersClub" placeholder="Teclea tu Diners Club">
+    <div *ngIf="formulario.get('dinersClub')?.invalid && formulario.get('dinersClub')?.touched">
+      <small *ngIf="formulario.get('dinersClub')?.hasError('pattern')">El número de tarjeta es inválido</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="jcb">JCB:</label>
+    <input id="jcb" formControlName="jcb" placeholder="Teclea tu JCB">
+    <div *ngIf="formulario.get('jcb')?.invalid && formulario.get('jcb')?.touched">
+      <small *ngIf="formulario.get('jcb')?.hasError('pattern')">El número de tarjeta es inválido</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+</form>

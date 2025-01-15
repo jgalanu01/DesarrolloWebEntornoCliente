@@ -1,0 +1,52 @@
+<form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" placeholder="Escribe tu nombre">
+    <div *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched">
+      <small *ngIf="formulario.get('nombre')?.hasError('required')">El nombre es obligatorio.</small>
+      <small *ngIf="formulario.get('nombre')?.hasError('maxlength')">Máximo 20 caracteres.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="correo">Correo:</label>
+    <input id="correo" type="email" formControlName="correo" placeholder="correo@gmail.com">
+    <div *ngIf="formulario.get('correo')?.invalid && formulario.get('correo')?.touched">
+      <small *ngIf="formulario.get('correo')?.hasError('required')">El correo es obligatorio.</small>
+      <small *ngIf="formulario.get('correo')?.hasError('pattern')">Debe ser un correo @gmail.com.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="edad">Edad:</label>
+    <input id="edad" type="number" formControlName="edad" placeholder="Escribe tu edad">
+    <div *ngIf="formulario.get('edad')?.invalid && formulario.get('edad')?.touched">
+      <small *ngIf="formulario.get('edad')?.hasError('required')">La edad es obligatoria.</small>
+      <small *ngIf="formulario.get('edad')?.hasError('min')">Debes tener al menos 18 años.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="cargo">Cargo:</label>
+    <select id="cargo" formControlName="cargo">
+      <option value="Junior">Junior</option>
+      <option value="Senior">Senior</option>
+      <option value="Leader">Leader</option>
+    </select>
+    <div *ngIf="formulario.get('cargo')?.invalid && formulario.get('cargo')?.touched">
+      <small *ngIf="formulario.get('cargo')?.hasError('required')">Selecciona un cargo.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="salario">Salario:</label>
+    <input id="salario" type="number" formControlName="salario" placeholder="Escribe tu salario">
+    <div *ngIf="formulario.get('salario')?.invalid && formulario.get('salario')?.touched">
+      <small *ngIf="formulario.get('salario')?.hasError('required')">El salario es obligatorio.</small>
+      <small *ngIf="formulario.get('salario')?.hasError('min')">Debe ser mayor o igual a 900.</small>
+      <small *ngIf="formulario.get('salario')?.hasError('max')">Debe ser menor o igual a 1200.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+</form>
