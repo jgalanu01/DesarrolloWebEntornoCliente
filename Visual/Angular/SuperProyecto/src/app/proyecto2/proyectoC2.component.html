@@ -1,0 +1,8 @@
+<div class="content" role="main">
+<h1 (mouseover)="cambiarNombre()" (mouseleave)="retornarNombre()">{{nombreCiclo}}</h1>
+<input type="text" #user placeholder="Teclea nombre del usuario">
+<button (click)="obtenerNombre(user.value)" class="btn btn-primary">Guardar Nombre</button>
+<span>{{nombreUsuario}}</span>
+<app-header></app-header>
+<app-footer></app-footer>
+ </div>

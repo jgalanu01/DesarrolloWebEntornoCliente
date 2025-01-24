@@ -1,0 +1,9 @@
+<div class="content" role="main">
+<span [style.font-size]="tamanio1">{{tiempo}}</span>
+<h3>Calificaciones: {{nota}}</h3>
+<div *ngIf="nota<5;then Suspende;else Aprueba"></div>
+<ng-template #Aprueba> <p [style.color]="azul">Aprueba</p></ng-template>
+<ng-template #Suspende><p [style.color]="rojo">Suspende</p></ng-template>
+
+
+</div>
