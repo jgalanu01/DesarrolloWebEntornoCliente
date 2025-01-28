@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { ServicioclienteService } from '../serviciocliente.service';
+import { Usuario } from '../usuario';
+
+@Component({
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css'],
+})
+export class RegistroComponent {
+  usuario: Usuario = new Usuario();
+  constructor(private servicio: ServicioclienteService) {}
+  Registrar() {
+    //llamar al servicio de añadirNuevousuario (usuario)
+    this.servicio.insertarUsuario(this.usuario).subscribe((x: Usuario) => {
+      this.usuario = x;
+    });
+  }
+}

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-auto">
+      <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" class="form-control"  placeholder="Nombre del usuario">
+          <small id="helpId" class="text-muted">Falta nombre</small>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" [(ngModel)]="usuario.email" name="email" id="email" class="form-control" placeholder="Email del usuario">
+            <small id="helpId" class="text-muted">Falta email</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" [(ngModel)]="usuario.pwd" name="password" id="password" class="form-control" placeholder="Password del usuario">
+              <small id="helpId" class="text-muted">Falta contraseña</small>
+              </div>
+              <button class="btn btn-info" (click)="Registrar()">Registrar</button>
+              </div>
+              </div>
+</div>
+
