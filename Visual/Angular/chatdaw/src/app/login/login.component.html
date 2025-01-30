@@ -11,6 +11,9 @@
               <input type="password" [(ngModel)]="usuario.pwd" name="password" id="password" class="form-control" placeholder="Password del usuario">
               <small id="helpId" class="text-muted">Falta contraseña</small>
               </div>
+              <section class="example-section">
+                <mat-checkbox class="example-margin" [(ngModel)]="privado">Privado</mat-checkbox>
+              </section>
               <button class="btn btn-info" (click)="Login()">Iniciar Sesión</button>
               </div>
               </div>
