@@ -11,10 +11,19 @@ import { ServicioclienteService } from '../serviciocliente.service';
   templateUrl: './chat-p.component.html',
   styleUrls: ['./chat-p.component.css'],
 })
-export class ChatComponent implements OnInit {
+export class ChatPComponent implements OnInit {
+  servicio: any;
+  route: any;
+constructor(private httpCliente:ServicioclienteService){
+
+}
   msjchat = {
+    id:0,
+    usuario:'',
+    fecha:'',
+    mensaje:'',
     destinatario: '',
-    mensaje: '',
+    activo:1
   };
 
   miParametro: string = '';
@@ -32,24 +41,28 @@ export class ChatComponent implements OnInit {
     activo: 1,
   };
 
-  constructor(
-    private servicio: ServicioclienteService,
-    private route: Router
-  ) {}
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) tabla!: MatTable<Mensaje>;
 
   ngOnInit(): void {
-    this.nUsuario = sessionStorage.getItem('Nombre');
 
-    if (this.nUsuario) {
-      this.recargar();
-    } else {
+    //si no hay usuario logeado se resetea el datasource
+    if (sessionStorage.getItem('Nombre')==null) {
       this.dataSource = new MatTableDataSource<Mensaje>();
-    }
+
+  }else{
+    this.nUsuario=sessionStorage.getItem('Nombre')||'';
+    this.httpCliente.leerMensajesP(this.nUsuario).subscribe((resultado: Mensaje[]) => {
+      this.dataSource.data=resultado;
+      this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
+    });
+
   }
+}
 
   recargar() {
     this.servicio.leerMensajes().subscribe((resultado: Mensaje[]) => {
@@ -65,9 +78,21 @@ export class ChatComponent implements OnInit {
   }
 
   enviarMensaje() {
-    if (!this.msjchat.mensaje.trim() || !this.msjchat.destinatario.trim()) {
-      console.warn('Mensaje o destinatario vacío');
-      return;
+  this.msjchat.usuario=sessionStorage.getItem('Nombre')||'';
+  this.msjchat.fecha=new Date().toLocaleString('es-ES', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  });
+   this.httpCliente.insertarMensajeP(this.mensaje).subscribe(
+    ()=>{
+
+    }
+   )
     }
 
     const nuevoMensaje: Mensaje = {

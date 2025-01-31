@@ -5,17 +5,23 @@
 </ng-container>
 
 <form>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="example-form-field">
     <mat-label>Nombre del destinatario</mat-label>
-    <input matInput [(ngModel)]="msjchat.destinatario" name="destinatario">
+    <input matInput type="text" [(ngModel)]="msjchat.destinatario" name="destinatario">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="example-form-field">
     <mat-label>Escribe mensaje y pulsa enter</mat-label>
-    <input matInput placeholder="Enter al finalizar" [(ngModel)]="msjchat.mensaje" name="mensaje">
+    <input matInput type="text" (keyup)="recargar()" (keydown.enter)="enviarMensaje()" [(ngModel)]="msjchat.mensaje" name="mensaje">
   </mat-form-field>
 
-  <button mat-button color="primary" (click)="enviarMensaje()">Enviar</button>
+  <br>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por cualquier campo" #input>
+  </mat-form-field>
+
+
 </form>
 
 <mat-label>Mensajes recibidos por {{ miParametro }}</mat-label>

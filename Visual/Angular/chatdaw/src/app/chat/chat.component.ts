@@ -12,6 +12,7 @@ import { ServicioclienteService } from '../serviciocliente.service';
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit {
+  dataSource = new MatTableDataSource<Mensaje>();
 recargar() {
   this.servicio.leerMensajes().subscribe((resultado: Mensaje[]) => {
     this.dataSource.data = resultado;
@@ -46,7 +47,7 @@ recargar() {
     private servicio: ServicioclienteService,
     private route: Router
   ) {}
-  dataSource = new MatTableDataSource<Mensaje>();
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

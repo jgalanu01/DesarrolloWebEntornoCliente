@@ -20,10 +20,14 @@ privado!:boolean;
     this.servicioCliente.logeo(this.usuario).subscribe((x)=>{
       this.usuario=x[0];
       sessionStorage.setItem('Nombre',x[0].email);
-      if (!this.privado){
-        this.router.navigate(['chat']);
+      if (this.usuario.email=="admin@gmail.com"){
+        this.router.navigate(['admin']);
       }else{
-        this.router.navigate(['chatp']);
+        if (this.privado){
+          this.router.navigate(['chatp'])
+        }else{
+          this.router.navigate(['chat']);
+        }
       }
 
     })

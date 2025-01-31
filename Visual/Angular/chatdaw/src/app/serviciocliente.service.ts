@@ -1,26 +1,28 @@
 import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Mensaje } from './mensaje';
 import { Usuario } from './usuario';
+import { LOCALE_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicioclienteService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, @Inject(LOCALE_ID) private locale: string) {}
 
   insertarMensajeP(msjchat: Mensaje): Observable<Mensaje> {
+    let fecha=new Date();
+    msjchat.fecha=formatDate(fecha,"HH:mm:ss/dd-MM-yyyy",this.locale);
     return this.http.post<Mensaje>(
       'http://moralo.atwebpages.com/menuAjax/chat/AltaMensajeP.php',
-      msjchat
-    );
+      msjchat)
   }
 
-  leerMensajesP(miParametro: string): Observable<Mensaje[]> {
+  leerMensajesP(parametroUser: string): Observable<Mensaje[]> {
     return this.http.get<Mensaje[]>(
-      'http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajesP.php?usuario='+miParametro)
+      'http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajesP.php?usuario='+parametroUser)
     }
 
   insertarUsuario(usuario: Usuario): Observable<Usuario> {
@@ -30,9 +32,9 @@ export class ServicioclienteService {
     );
   }
 
-  leerMensajes(): Observable<Mensaje[]> {
+  leerMensajes(){
     return this.http.get<Mensaje[]>(
-      'http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajes.php'
+      'http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajes2.php'
     );
   }
 
