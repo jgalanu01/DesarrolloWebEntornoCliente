@@ -5,6 +5,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Mensaje } from '../mensaje';
 import { ServicioclienteService } from '../serviciocliente.service';
+import { ServiciolocalService } from '../serviciolocal.service';
 
 @Component({
   selector: 'app-chat',
@@ -12,9 +13,15 @@ import { ServicioclienteService } from '../serviciocliente.service';
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit {
+  constructor(
+    private servicioLocal:ServiciolocalService,
+    private servicio: ServicioclienteService,
+    private route: Router
+  ) {}
+
   dataSource = new MatTableDataSource<Mensaje>();
 recargar() {
-  this.servicio.leerMensajes().subscribe((resultado: Mensaje[]) => {
+  this.servicioLocal.leerMensajes().subscribe((resultado: Mensaje[]) => {
     this.dataSource.data = resultado;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -43,10 +50,6 @@ recargar() {
     });
 
   }
-  constructor(
-    private servicio: ServicioclienteService,
-    private route: Router
-  ) {}
 
 
   applyFilter(event: Event) {

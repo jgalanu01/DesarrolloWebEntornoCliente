@@ -7,67 +7,48 @@ import { Mensaje } from '../mensaje';
 import { ServicioclienteService } from '../serviciocliente.service';
 
 @Component({
-  selector: 'app-chat',
+  selector: 'app-chat-p',
   templateUrl: './chat-p.component.html',
   styleUrls: ['./chat-p.component.css'],
 })
 export class ChatPComponent implements OnInit {
-  servicio: any;
-  route: any;
-constructor(private httpCliente:ServicioclienteService){
-
-}
   msjchat = {
-    id:0,
-    usuario:'',
-    fecha:'',
-    mensaje:'',
+    id: 0,
+    usuario: '',
+    fecha: '',
+    mensaje: '',
     destinatario: '',
-    activo:1
+    activo: 1,
   };
 
   miParametro: string = '';
   nUsuario: string | null = null;
-
   dataSource = new MatTableDataSource<Mensaje>();
   displayedColumns: string[] = ['id', 'fecha', 'usuario', 'mensaje', 'destinatario'];
 
-  mensaje: Mensaje = {
-    id: 0,
-    fecha: '',
-    usuario: '',
-    mensaje: '',
-    destinatario: 'todos',
-    activo: 1,
-  };
-
-
+  constructor(private servicio: ServicioclienteService, private route: Router) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) tabla!: MatTable<Mensaje>;
 
   ngOnInit(): void {
+    this.nUsuario = sessionStorage.getItem('Nombre') || '';
 
-    //si no hay usuario logeado se resetea el datasource
-    if (sessionStorage.getItem('Nombre')==null) {
-      this.dataSource = new MatTableDataSource<Mensaje>();
-
-  }else{
-    this.nUsuario=sessionStorage.getItem('Nombre')||'';
-    this.httpCliente.leerMensajesP(this.nUsuario).subscribe((resultado: Mensaje[]) => {
-      this.dataSource.data=resultado;
-      this.dataSource.paginator=this.paginator;
-      this.dataSource.sort=this.sort;
-    });
-
+    if (!this.nUsuario) {
+      console.warn('No hay usuario en sessionStorage. Redirigiendo al login...');
+      this.route.navigate(['/chat-p']);
+    } else {
+      this.cargarMensajes();
+    }
   }
-}
 
-  recargar() {
-    this.servicio.leerMensajes().subscribe((resultado: Mensaje[]) => {
+  cargarMensajes() {
+    if (!this.nUsuario) return;
+
+    this.servicio.leerMensajesP(this.nUsuario).subscribe((resultado: Mensaje[]) => {
+      console.log('Mensajes recibidos:', resultado);
       this.dataSource.data = resultado;
-
       if (this.paginator) {
         this.dataSource.paginator = this.paginator;
       }
@@ -77,26 +58,18 @@ constructor(private httpCliente:ServicioclienteService){
     });
   }
 
-  enviarMensaje() {
-  this.msjchat.usuario=sessionStorage.getItem('Nombre')||'';
-  this.msjchat.fecha=new Date().toLocaleString('es-ES', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  });
-   this.httpCliente.insertarMensajeP(this.mensaje).subscribe(
-    ()=>{
+  recargar() {
+    this.cargarMensajes();
+  }
 
-    }
-   )
+  enviarMensaje() {
+    if (!this.msjchat.mensaje.trim() || !this.msjchat.destinatario.trim()) {
+      console.warn('El mensaje o el destinatario están vacíos');
+      return;
     }
 
     const nuevoMensaje: Mensaje = {
-      id: 0, // Se genera en backend
+      id: 0, // El backend genera el ID
       fecha: new Date().toLocaleString('es-ES', {
         year: 'numeric',
         month: '2-digit',
@@ -112,16 +85,16 @@ constructor(private httpCliente:ServicioclienteService){
       activo: 1,
     };
 
-    this.servicio.escribirMensaje(nuevoMensaje).subscribe(() => {
+    this.servicio.insertarMensajeP(nuevoMensaje).subscribe(() => {
       this.recargar();
-      this.msjchat.mensaje = ''; // Limpiar el input
+      this.msjchat.mensaje = '';
     });
   }
 
   cerrarSesion() {
     sessionStorage.removeItem('Nombre');
     this.nUsuario = null;
-    this.route.navigate(['login']);
+    this.route.navigate(['/login']);
     this.dataSource = new MatTableDataSource<Mensaje>();
   }
 
