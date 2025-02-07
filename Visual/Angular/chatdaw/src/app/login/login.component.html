@@ -1,21 +1,25 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <div class="col-auto">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" [(ngModel)]="usuario.email" name="email" id="email" class="form-control" placeholder="Email del usuario">
+  <div class="row">
+    <div class="col-lg-6">
+           <div class="form-group">
+            <label for="email">EMAIL</label>
+            <input type="text" name="email" id="email"
+             class="form-control" placeholder="Teclea email"
+             aria-describedby="helpId" [(ngModel)]="usuario.email">
             <small id="helpId" class="text-muted">Falta email</small>
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" [(ngModel)]="usuario.pwd" name="password" id="password" class="form-control" placeholder="Password del usuario">
-              <small id="helpId" class="text-muted">Falta contraseña</small>
-              </div>
-              <section class="example-section">
-                <mat-checkbox class="example-margin" [(ngModel)]="privado">Privado</mat-checkbox>
-              </section>
-              <button class="btn btn-info" (click)="Login2()">Iniciar Sesión</button>
-              </div>
-              </div>
-</div>
+              <label for="pwd">PASSWORD</label>
+              <input type="password" name="pwd" id="pwd"
+              class="form-control" placeholder="Teclea Password"
+              aria-describedby="helpId"  [(ngModel)]="usuario.pwd">
+              <small id="helpId" class="text-muted">Faltaría Password</small>
+            </div>
 
+    </div>
+   <section class="example-section">
+  <mat-checkbox class="example-margin" [(ngModel)]="privado">Privado</mat-checkbox>
+</section>
+    <button class="btn btn-info m-2" (click)="logear2()">Logear</button>
+  </div>
+</div>

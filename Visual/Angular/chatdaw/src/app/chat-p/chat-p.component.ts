@@ -1,109 +1,85 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Mensaje } from '../mensaje';
-import { ServicioclienteService } from '../serviciocliente.service';
+import { ServiciosAdminService } from '../servicios-admin.service';
+import { ServiciosClienteService } from '../servicios-cliente.service';
+import { Usuario } from '../usuario';
+import { ServlocalclienteService } from '../servlocalcliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat-p',
   templateUrl: './chat-p.component.html',
-  styleUrls: ['./chat-p.component.css'],
+  styleUrls: ['./chat-p.component.css']
 })
 export class ChatPComponent implements OnInit {
-  msjchat = {
-    id: 0,
-    usuario: '',
-    fecha: '',
-    mensaje: '',
-    destinatario: '',
-    activo: 1,
-  };
+  seleccionado!: string;
+  listadoUsuarios: Usuario[]=[];
+  listadoMensajesE: Mensaje[]=[];
+  usuarioR!: string;
+msjChatP: Mensaje={
+  id:0,
+  usuario:'',
+  fecha:'',
+  mensaje:'',
+  destinatario:'',
+  activo:1,
+};
+constructor(private route:Router,private servicioL:ServlocalclienteService,private servicioAdmin:ServiciosAdminService ,private servicioCliente:ServiciosClienteService){}
 
-  miParametro: string = '';
-  nUsuario: string | null = null;
-  dataSource = new MatTableDataSource<Mensaje>();
-  displayedColumns: string[] = ['id', 'fecha', 'usuario', 'mensaje', 'destinatario'];
+enviarMensaje() {
+ if (this.usuarioR===sessionStorage.getItem('Nombre')){
+  this.msjChatP.fecha=new Date().toLocaleString() ||'';
 
-  constructor(private servicio: ServicioclienteService, private route: Router) {}
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) tabla!: MatTable<Mensaje>;
-
-  ngOnInit(): void {
-    this.nUsuario = sessionStorage.getItem('Nombre') || '';
-
-    if (!this.nUsuario) {
-      console.warn('No hay usuario en sessionStorage. Redirigiendo al login...');
-      this.route.navigate(['/chat-p']);
-    } else {
-      this.cargarMensajes();
-    }
+  console.log(this.seleccionado)
+  this.msjChatP.usuario=this.usuarioR;
+  if (this.msjChatP.destinatario!=null){
+    this.servicioL.escribirMensajeP(this.msjChatP).subscribe();
+    this.msjChatP.mensaje=""
   }
+//   ((resultado:Mensaje[])=>{
+//     this.servicioCliente.leerMensajePrivados(this.usuarioR).subscribe(
+//       (x:Mensaje[])=>{
+//         this.dataSource.data=x;
+//       }
+//     )
+//   })
 
-  cargarMensajes() {
-    if (!this.nUsuario) return;
-
-    this.servicio.leerMensajesP(this.nUsuario).subscribe((resultado: Mensaje[]) => {
-      console.log('Mensajes recibidos:', resultado);
-      this.dataSource.data = resultado;
-      if (this.paginator) {
-        this.dataSource.paginator = this.paginator;
-      }
-      if (this.sort) {
-        this.dataSource.sort = this.sort;
-      }
-    });
-  }
-
-  recargar() {
-    this.cargarMensajes();
-  }
-
-  enviarMensaje() {
-    if (!this.msjchat.mensaje.trim() || !this.msjchat.destinatario.trim()) {
-      console.warn('El mensaje o el destinatario están vacíos');
-      return;
-    }
-
-    const nuevoMensaje: Mensaje = {
-      id: 0, // El backend genera el ID
-      fecha: new Date().toLocaleString('es-ES', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-      }),
-      usuario: this.nUsuario || 'Desconocido',
-      mensaje: this.msjchat.mensaje,
-      destinatario: this.msjchat.destinatario,
-      activo: 1,
-    };
-
-    this.servicio.insertarMensajeP(nuevoMensaje).subscribe(() => {
-      this.recargar();
-      this.msjchat.mensaje = '';
-    });
-  }
-
-  cerrarSesion() {
-    sessionStorage.removeItem('Nombre');
-    this.nUsuario = null;
-    this.route.navigate(['/login']);
-    this.dataSource = new MatTableDataSource<Mensaje>();
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 }
+
+actualizar() {
+}
+
+cerrarSesion() {
+  sessionStorage.removeItem('Nombre');
+  this.dataSource=new MatTableDataSource<Mensaje>();
+  this.route.navigate(['login']);
+}
+dataSource=new MatTableDataSource<Mensaje>();
+applyFilter($event: KeyboardEvent) {
+}
+displayedColumns: string[]=['id','usuario','fecha','mensaje','destinatario'];
+
+ngOnInit(): void {
+    if (sessionStorage.getItem('Nombre')==null){
+      this.dataSource=new MatTableDataSource<Mensaje>();
+    }else{
+      this.usuarioR=sessionStorage.getItem('Nombre')||'';
+      this.servicioL.listadoMensajesE(this.usuarioR).subscribe((x:Mensaje[])=>{
+        this.listadoMensajesE=x;
+      //nuevo servicio de listado de mis mensajes privados que
+      //pertenecen a this.usuarioR
+      this.servicioL.listadoMensajesP(this.usuarioR).subscribe((x:Mensaje[])=>{
+        this.dataSource.data=x;
+      })
+      this.servicioL.listadoUsuarios().subscribe((x:Usuario[])=>{
+        this.listadoUsuarios=x
+      })
+
+      })
+      }
+    }
+  }
+
+

@@ -1,79 +1,74 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServicioclienteService } from '../serviciocliente.service';
+import { ServiciosClienteService } from '../servicios-cliente.service';
 import { Usuario } from '../usuario';
-import { ServiciolocalService } from '../serviciolocal.service';
-
-
+import { ServlocalclienteService } from '../servlocalcliente.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private router:Router, private servicioLocal:ServiciolocalService, private servicioCliente:ServicioclienteService) {
-
-  }
-
-  listadoUsuarios:Usuario[]=[];
-  usuarioEncontrado!: Usuario;
-Login2() {
-
-  this.servicioLocal.leerTodosUsuarios().subscribe(x=>{
-    this.listaUsuarios=x;
-    this.listadoUsuarios.forEach(user=>{
-      if (user.email===this.usuario.email && user.pwd===this.usuario.pwd){
-        this.usuarioEncontrado=user;
-      }
-    })
-  });
-
-  if(this.usuarioEncontrado){
-    if(this.usuarioEncontrado.activo==1){
-      //abrir sesion
-      sessionStorage.setItem('Nombre',this.usuarioEncontrado.email);
-      if(this.usuario.email=="admin@gmail.com"){
-        this.router.navigate(['admin'])
-      }else{
-
-      }
-      if(!this.privado){
-        this.router.navigate(['chat'])
-      }
-    }
-  }
-
-}
-privado!:boolean;
-
-  usuario: Usuario=new Usuario();
-  listaUsuarios:Usuario[]=[];
-  Login(){
-    this.servicioCliente.logeo(this.usuario).subscribe((x)=>{
-      this.usuario=x[0];
-      sessionStorage.setItem('Nombre',x[0].email);
+usuario: Usuario={
+  nombre: '',
+  email: '',
+  pwd: '',
+  activo: 0
+};
+privado!: boolean;
+constructor(private servicioclienteL:ServlocalclienteService,private servicio:ServiciosClienteService,private router:Router)
+{}
+logear() {
+  //¿hay un usuario donde coincida el mail y el pwd con el usuario
+  //que se le pasa desde el formulario (ngModelo=this.usuario)?
+ this.servicio.logearUsuario(this.usuario).subscribe(
+  (us)=>{
+    if (us!=null)
+    {
+      //si cumple el primer requisito se abre una sesión
+      sessionStorage.setItem('Nombre',us[0].email);
+      //usuario reservado de administrador: bloquear/desbloquear mensajes y usuarios
+      //servicios de tipo update en el campo activo
       if (this.usuario.email=="admin@gmail.com"){
-        this.router.navigate(['admin']);
-      }else{
-        if (this.privado){
-          this.router.navigate(['chatp'])
-        }else{
-          this.router.navigate(['chat']);
-        }
+        this.router.navigate(['admin'])
+      }else
+      //está marcado el cuadro checkbox (privado=true)
+      if (this.privado){
+        this.router.navigate(['chatp'],{queryParams:{'nombre':us[0].email}});
+
+      }else
+      {
+      this.router.navigate(['chat'],{queryParams:{'nombre':us[0].email}});
       }
 
-    })
+      }
 
-
-  }
-
+});
 }
+logear2(){
+  this.servicioclienteL.logearUsuario(this.usuario).subscribe(
+    (us)=>{
 
+      if (us!=null)
+      {
+        //si cumple el primer requisito se abre una sesión
+        sessionStorage.setItem('Nombre',this.usuario.email);
+        //usuario reservado de administrador: bloquear/desbloquear mensajes y usuarios
+        //servicios de tipo update en el campo activo
+        if (this.usuario.email=="admin@gmail.com"){
+          this.router.navigate(['admin'])
+        }else
+        //está marcado el cuadro checkbox (privado=true)
+        if (this.privado){
+          this.router.navigate(['chatp'],{queryParams:{'nombre':us.email}});
 
+        }else
+        {
+        this.router.navigate(['chat'],{queryParams:{'nombre':us.email}});
+        }
 
+        }
 
-
-
-
-
-
+  });
+}
+}

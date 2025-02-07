@@ -3,7 +3,7 @@ export class Mensaje {
   usuario!: string;
   fecha!: string;
   mensaje!: string;
-  activo!: number;
   destinatario!: string;
+  activo!:number;
 
 }
