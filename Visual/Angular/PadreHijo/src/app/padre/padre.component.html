@@ -1,0 +1,25 @@
+<div class="clasePadre">
+<h2>Comunicación Padre-Hijo1</h2>
+<span>Mensaje de Padre a Hijo1</span>
+<input type="text" [(ngModel)]="mensajeParaHijo1">
+<p>Mensaje de hijo1 a padre {{mensajeDeHijo1}}</p>
+<p>El numero aleatorio es {{numeroAleatorio}}</p>
+
+<app-hijo1 [mensajeDeEntradaHijo1]="mensajeParaHijo1"
+  (mensajeDeSalidaPadreHijo1)="actualizarMensajeDeHijo1($event)"
+  (entradadelNumeroRandom)="actualizarRandom($event)">
+</app-hijo1>
+
+<h2>Comunicación Padre-Hijo2</h2>
+  <span>Mensaje de Padre a Hijo2</span>
+  <input type="text" [(ngModel)]="mensajeParaHijo2">
+  <p>Mensaje de hijo2 a padre {{mensajeDeHijo2}}</p>
+
+<app-hijo2
+[mensajeDeEntradaHijo2]="mensajeParaHijo2"
+(mensajeDeSalidaPadreHijo2)="actualizarMensajeDeHijo2($event)">
+
+
+</app-hijo2>
+
+</div>
