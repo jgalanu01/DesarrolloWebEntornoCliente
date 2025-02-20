@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "pregunta": "¿Cómo funciona React?",
+      "respuesta": "React es una biblioteca de JavaScript para construir interfaces de usuario."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Qué es el estado en React?",
+      "respuesta": "El estado es un objeto donde almacenamos datos que pueden cambiar en un componente."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Cómo se manejan los eventos en React?",
+      "respuesta": "Los eventos en React se manejan con funciones y sintaxis similar a JavaScript."
+    }
+  ]
+  
