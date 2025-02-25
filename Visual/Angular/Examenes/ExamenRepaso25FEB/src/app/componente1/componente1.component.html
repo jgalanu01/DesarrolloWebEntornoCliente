@@ -1,0 +1,8 @@
+<div class="text-center p-3">
+  <button *ngFor="let color of colores"
+  [ngStyle]="{'background-color':colorActual?colorActual:color,'color':'white'}"
+  class="btn m-1"
+  (click)="cambiarColor(color)">
+    BOTON
+</button>
+</div>
