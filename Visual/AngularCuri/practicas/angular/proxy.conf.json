@@ -1,7 +1,0 @@
-{
-    "/servicioServidor": {
-      "target": "http://localhost",
-      "secure": false
-    }
-  }
-  
