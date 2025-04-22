@@ -25,6 +25,32 @@ function filtrosCine(listadoCine) {
 
   let peliculas2003 = vector1.filter((item) => item.Año == 2003);
   console.log("Cuantas son del 2003.", peliculas2003.length);
+
+
+  //8. Media de duración de las películas
+
+  const mediaPeliculas=vector1.reduce((acumulado,item)=>acumulado+item.Minutos,0)/vector1.length;
+  console.log("Media duracion de películas: ",mediaPeliculas);
+
+  //9.Títulos de películas que dirige     "Director": "Steven Spielberg",
+
+  let peliculasSpielberg=vector1.filter((item)=>item.Director=="Steven Spielberg").map((item)=>item.Título);
+  console.log("Peliculas dirigidas por Spielberg: ",peliculasSpielberg);
+
+  //10. Película más antigua.
+
+  let peliculaMasAntigua=vector1[0];
+
+  vector1.forEach((item)=>{
+    if(item.Año<peliculaMasAntigua.Año){
+      peliculaMasAntigua=item;
+    }
+
+  });
+  console.log("La pelicula mas antigua es: ",peliculaMasAntigua.Título)
+  
+
+
 }
 
 //Añadir todo el fichero empleados al vector listaEmpleados
