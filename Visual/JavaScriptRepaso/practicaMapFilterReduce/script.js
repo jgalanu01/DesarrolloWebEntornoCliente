@@ -47,7 +47,8 @@ if(aparicion===undefined){
 //Añadir una nueva fruta
 let nombreF=prompt("Nombre de la nueva fruta");
 let precioF=prompt("Precio de la nueva fruta");
-let stockF=prompt("Stock de la nueva fruta");
+let stockF=prompt("Stock de la nueva fruta"); 
+
 vectorAux.push({nombre:nombreF,precio:Number(precioF),stock:Number(stockF)});
 console.log(vectorAux);
 
