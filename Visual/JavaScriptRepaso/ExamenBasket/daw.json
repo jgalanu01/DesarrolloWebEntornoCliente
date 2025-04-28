@@ -1,0 +1,29 @@
+[
+  {
+    "nombre":"Lucía García",
+    "SistemasInformáticos":8,
+    "BasesdeDatos":7,
+    "Programación":9,
+    "LenguajesdeMarcas":7,
+    "EntornosdeDesarrollo":9,
+    "DesarrolloWebenEntornoCliente":8,
+    "DesarrolloWebenEntornoServidor":7,
+    "DesplieguedeAplicacionesWeb":8,
+    "DiseñodeInterfacesWeb":9,
+    "ProyectoDAW":8
+  },
+  {
+    "nombre":"Daniel López",
+    "SistemasInformáticos":6,
+    "BasesdeDatos":6,
+    "Programación":7,
+    "LenguajesdeMarcas":8,
+    "EntornosdeDesarrollo":7,
+    "DesarrolloWebenEntorno Cliente":7,
+    "DesarrolloWebenEntornoServidor":6,
+    "DesplieguedeAplicacionesWeb":7,
+    "DiseñodeInterfacesWeb":8,
+    "ProyectoDAW":7
+  }
+
+  ]
