@@ -1,0 +1,46 @@
+
+<div class="container"></div>
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6">
+    <button class="btn btn-danger">Crear Elemento</button>
+    <div class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+           Nombre
+          </th>
+          <th>
+            Direccion
+          </th>
+          <th>
+           Cargo
+          </th>
+          <th>
+          Edad
+          </th>
+          <th>
+            Imagen
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of listadoEmpleados">
+          <td>{{p.id}} </td>
+          <td>{{p.nombre}}</td>
+          <td>{{p.direccion}}</td>
+          <td>{{p.cargo}} </td>
+          <td>{{p.edad}} </td>
+          <td>{{p.imagen}} </td>
+          <td><button class="btn btn-info">Modificar</button></td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+
+        </tr>
+      </tbody>
+
+    </div>
+  </div>
+</div>

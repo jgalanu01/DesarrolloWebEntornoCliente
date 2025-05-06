@@ -1,25 +1,26 @@
 fetch("daw.json")
-  .then(response => response.json())
-  .then(datos => comprobarTitulos(datos));
+.then(respuesta=>respuesta.json())
+.then(datos=>mostrar(datos))
 
-function comprobarTitulos(datos) {
-  datos.forEach(item => {
-    const nombre = item.nombre;
-    let aprueba = true; // Suponemos que aprueba
+function mostrar(datos){
+    console.log(datos);
 
-    for (let asignatura in item) {
-      if (asignatura !== "nombre") { // Ignorar el nombre
-        if (item[asignatura] < 5) {
-          aprueba = false; // Si alguna nota es menor que 5, no aprueba
-          break; // Ya no hace falta seguir comprobando
-        }
-      }
-    }
+    const vectorLucia=datos.slice().filter(item=>item.nombre="Lucía García").map(item=>item.ProyectoDAW);
+    console.log(vectorLucia);
 
-    if (aprueba) {
-      console.log(`${nombre} APRUEBA y se titula 🎓`);
-    } else {
-      console.log(`${nombre} NO aprueba 😥`);
-    }
-  });
+    const vectorDaniel=datos.slice().filter(item=>item.nombre="Daniel López").map(item=>item.ProyectoDAW);
+    console.log(vectorDaniel);
+
+    
+    
+    
+
+    
+    
+
+  
+
+   
+
+  
 }

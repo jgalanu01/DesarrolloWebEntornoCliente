@@ -1,0 +1,41 @@
+<div class="container"></div>
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6">
+    <button class="btn btn-danger">Crear Elemento</button>
+    <div class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            Provincia
+          </th>
+          <th>
+            Altura Max
+          </th>
+          <th>
+            Situacion Max
+          </th>
+          <th>
+            Altura Min
+          </th>
+          <th>
+            Situacion Min
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of listadoAlturas">
+          <td>{{p.Provincia}} </td>
+          <td>{{p.AlturaMaxima}}</td>
+          <td>{{p.SituacionAltMax}}</td>
+          <td>{{p.AlturaMinima}} </td>
+          <td>{{p.SituacionAltMin}} </td>
+          <td><button class="btn btn-info">Modificar</button></td>
+          <td><button class="btn btn-danger">Eliminar</button></td>
+
+        </tr>
+      </tbody>
+
+    </div>
+  </div>
+</div>
