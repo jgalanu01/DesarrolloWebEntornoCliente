@@ -1,0 +1,59 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let cocinero"> {{cocinero.id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</th>
+      <td mat-cell *matCellDef="let cocinero"> {{cocinero.nombre}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="imagen">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+      <td mat-cell *matCellDef="let cocinero"> <img src="{{cocinero.imagen}}">  </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+      <td mat-cell *matCellDef="let cocinero">{{cocinero.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="funcion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Funcion</th>
+      <td mat-cell *matCellDef="let cocinero">{{cocinero.funcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Modificar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Modificar</th>
+      <td mat-cell *matCellDef="let cocinero"><button (click)="modificar(cocinero.id)">Modificar</button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Eliminar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Eliminar</th>
+      <td mat-cell *matCellDef="let cocinero"><button (click)="eliminar(cocinero.id)">Eliminar</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
