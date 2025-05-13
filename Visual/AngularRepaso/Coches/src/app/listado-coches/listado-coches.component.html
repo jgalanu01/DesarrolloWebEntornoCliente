@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- LISTADO DE COCHES -->
+    <div class="col-12 col-lg-6 mb-4">
+      <h3>Listado Coches</h3>
+      <div style="overflow-x: auto;">
+        <table class="table table-bordered table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>Color</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Consumo</th>
+              <th>Precio</th>
+              <th>Kilómetros</th>
+              <th>Tipo de Motor</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of listadoCoches">
+              <td>{{ c.color }}</td>
+              <td>{{ c.marca }}</td>
+              <td>{{ c.modelo }}</td>
+              <td>{{ c.consumo }}</td>
+              <td>{{ c.precio }}</td>
+              <td>{{ c.kms }}</td>
+              <td>{{ c.tipoMotor }}</td>
+              <td>
+                <button class="btn btn-info btn-sm" (click)="seleccionar(c)">Seleccionar</button>
+              </td>
+              <td>
+                <button class="btn btn-success btn-sm" (click)="eliminar(c)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="col-12 col-lg-6">
+      <h3>Formulario Añadir/Modificar Coches</h3>
+      <div class="form-group">
+        <label>Color</label>
+        <input class="form-control mb-2" type="text" name="color" placeholder="Teclea Color" [(ngModel)]="cocheSeleccionado.color">
+
+        <label>Marca</label>
+        <input class="form-control mb-2" type="text" name="marca" placeholder="Teclea Marca" [(ngModel)]="cocheSeleccionado.marca">
+
+        <label>Modelo</label>
+        <input class="form-control mb-2" type="text" name="modelo" placeholder="Teclea Modelo" [(ngModel)]="cocheSeleccionado.modelo">
+
+        <label>Consumo</label>
+        <input class="form-control mb-2" type="number" name="consumo" placeholder="Teclea Consumo" [(ngModel)]="cocheSeleccionado.consumo">
+
+        <label>Precio</label>
+        <input class="form-control mb-2" type="number" name="precio" placeholder="Teclea Precio" [(ngModel)]="cocheSeleccionado.precio">
+
+        <label>Kilómetros</label>
+        <input class="form-control mb-2" type="number" name="kilometros" placeholder="Teclea kilómetros" [(ngModel)]="cocheSeleccionado.kms">
+
+        <label>Tipo de motor</label>
+        <input class="form-control mb-2" type="text" name="tipoM" placeholder="Teclea tipo de motor" [(ngModel)]="cocheSeleccionado.tipoMotor">
+
+      </div>
+      <button class="btn btn-danger" (click)="crearCoche()">Insertar Coche</button>
+      <button class="btn btn-warning" (click)="modificarCoche()">Modificar Coche</button>
+    </div>
+  </div>
+</div>
