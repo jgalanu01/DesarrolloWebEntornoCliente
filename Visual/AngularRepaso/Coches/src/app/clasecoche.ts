@@ -1,5 +1,5 @@
 export class Clasecoche {
-
+  matricula!:string;
   color!:string;
   marca!:string;
   modelo!:string;
@@ -7,6 +7,4 @@ export class Clasecoche {
   precio!:number;
   kms!:number;
   tipoMotor!:string;
-
-
 }

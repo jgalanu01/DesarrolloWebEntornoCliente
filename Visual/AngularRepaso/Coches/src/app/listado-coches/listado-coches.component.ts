@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Clasecoche } from '../clasecoche';
 import { ServicioCochesService } from '../servicio-coches.service';
 
@@ -12,7 +12,6 @@ modificarCoche() {
   this.http.modificarCoche(this.cocheSeleccionado).subscribe((x:Clasecoche)=>{
     this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
   })
-
 }
 crearCoche() {
   return this.http.crearCoche(this.cocheSeleccionado).subscribe((x:Clasecoche)=>{
@@ -20,23 +19,10 @@ crearCoche() {
   })
 
 }
-
-eliminar(c: Clasecoche) {
-  this.http.eliminarCoche(c).subscribe((x:Clasecoche)=>{
-    this.http.leerCoches().subscribe(x=>this.listadoCoches=x); //Recarga
-    alert("Coche/s eliminado/s")
-
-  })
-
-}
-seleccionar(c: Clasecoche) {
-  this.cocheSeleccionado=c;
-
-}
-
+  coche!:Clasecoche;
 listadoCoches!:Clasecoche[];
-coche!:Clasecoche;
 cocheSeleccionado:Clasecoche={
+  matricula:'',
   color: '',
   marca: '',
   modelo: '',
@@ -45,11 +31,18 @@ cocheSeleccionado:Clasecoche={
   kms: 0,
   tipoMotor: ''
 }
-
-
-constructor(private http:ServicioCochesService){
-  this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
-
+eliminar(c: Clasecoche) {
+ this.http.eliminarCoche(c).subscribe((x:Clasecoche)=>{
+   this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
+   alert ("Coche/s eliminado/s");
+ })
 }
+seleccionar(c: Clasecoche) {
+this.cocheSeleccionado=c;
+}
+constructor(private http:ServicioCochesService){
+ this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
+}
+
 
 }

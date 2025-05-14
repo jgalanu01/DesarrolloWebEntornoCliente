@@ -1,72 +1,92 @@
 <div class="container-fluid">
   <div class="row">
-    <!-- LISTADO DE COCHES -->
-    <div class="col-12 col-lg-6 mb-4">
-      <h3>Listado Coches</h3>
-      <div style="overflow-x: auto;">
-        <table class="table table-bordered table-hover">
-          <thead class="table-dark">
+
+     <div class="col-lg-8">
+
+       <h3>Listado Coches</h3>
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <th>Color</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Consumo</th>
-              <th>Precio</th>
-              <th>Kilómetros</th>
-              <th>Tipo de Motor</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
+            <th>MATRICULA</th>
+            <th>COLOR</th>
+            <th>MARCA</th>
+            <th>MODELO</th>
+            <th>CONSUMO</th>
+            <th>PRECIO</th>
+            <th>KMS</th>
+            <th>TIPOMOTOR</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let c of listadoCoches">
-              <td>{{ c.color }}</td>
-              <td>{{ c.marca }}</td>
-              <td>{{ c.modelo }}</td>
-              <td>{{ c.consumo }}</td>
-              <td>{{ c.precio }}</td>
-              <td>{{ c.kms }}</td>
-              <td>{{ c.tipoMotor }}</td>
-              <td>
-                <button class="btn btn-info btn-sm" (click)="seleccionar(c)">Seleccionar</button>
-              </td>
-              <td>
-                <button class="btn btn-success btn-sm" (click)="eliminar(c)">Eliminar</button>
-              </td>
+              <td>{{c.matricula}}</td>
+              <td>{{c.color}}</td>
+              <td>{{c.marca}}</td>
+              <td>{{c.modelo}}</td>
+              <td>{{c.consumo}}</td>
+              <td>{{c.precio}}</td>
+              <td>{{c.kms}}</td>
+              <td>{{c.tipoMotor}}</td>
+
+              <td><button class="btn btn-info" (click)="seleccionar(c)">Seleccionar</button>
+              <td><button class="btn btn-success" (click)="eliminar(c)">Eliminar</button></td>
+
             </tr>
+
           </tbody>
         </table>
+
+     </div>
+     <div class="col-lg-4">
+       <div class="form-group">
+        <h3>Formulario Insertar/Modificar</h3>
+        <div class="form-group">
+          <label for="marca">Matricula</label>
+          <input type="text" name="matricula" id="matricula" class="form-control" placeholder="teclea matricula" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.matricula">
+          <small id="helpId" class="text-muted">Error</small>
+        </div>
+         <label for="color">Color</label>
+         <input type="text" name="color" id="color" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.color">
+         <small id="helpId" class="text-muted">Error</small>
+       </div>
+       <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" id="marca" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.marca">
+        <small id="helpId" class="text-muted">Error</small>
       </div>
-    </div>
-
-    <!-- FORMULARIO -->
-    <div class="col-12 col-lg-6">
-      <h3>Formulario Añadir/Modificar Coches</h3>
       <div class="form-group">
-        <label>Color</label>
-        <input class="form-control mb-2" type="text" name="color" placeholder="Teclea Color" [(ngModel)]="cocheSeleccionado.color">
-
-        <label>Marca</label>
-        <input class="form-control mb-2" type="text" name="marca" placeholder="Teclea Marca" [(ngModel)]="cocheSeleccionado.marca">
-
-        <label>Modelo</label>
-        <input class="form-control mb-2" type="text" name="modelo" placeholder="Teclea Modelo" [(ngModel)]="cocheSeleccionado.modelo">
-
-        <label>Consumo</label>
-        <input class="form-control mb-2" type="number" name="consumo" placeholder="Teclea Consumo" [(ngModel)]="cocheSeleccionado.consumo">
-
-        <label>Precio</label>
-        <input class="form-control mb-2" type="number" name="precio" placeholder="Teclea Precio" [(ngModel)]="cocheSeleccionado.precio">
-
-        <label>Kilómetros</label>
-        <input class="form-control mb-2" type="number" name="kilometros" placeholder="Teclea kilómetros" [(ngModel)]="cocheSeleccionado.kms">
-
-        <label>Tipo de motor</label>
-        <input class="form-control mb-2" type="text" name="tipoM" placeholder="Teclea tipo de motor" [(ngModel)]="cocheSeleccionado.tipoMotor">
-
+        <label for="modelo">Modelo</label>
+        <input type="text" name="modelo" id="modelo" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.modelo">
+        <small id="helpId" class="text-muted">Error</small>
+      </div>
+      <div class="form-group">
+        <label for="consumo">Consumo</label>
+        <input type="number" name="consumo" id="consumo" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.consumo">
+        <small id="helpId" class="text-muted">Error</small>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" name="precio" id="precio" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.precio">
+        <small id="helpId" class="text-muted">Error</small>
+      </div>
+      <div class="form-group">
+        <label for="kms">Kms</label>
+        <input type="number" name="kms" id="kms" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.kms">
+        <small id="helpId" class="text-muted">Error</small>
+      </div>
+      <div class="form-group">
+        <label for="tipoMotor">TipoMotor</label>
+        <input type="text" name="tipoMotor" id="tipoMotor" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.tipoMotor">
+        <small id="helpId" class="text-muted">Error</small>
       </div>
       <button class="btn btn-danger" (click)="crearCoche()">Insertar Coche</button>
       <button class="btn btn-warning" (click)="modificarCoche()">Modificar Coche</button>
+
+     </div>
     </div>
-  </div>
+
+
+
 </div>
