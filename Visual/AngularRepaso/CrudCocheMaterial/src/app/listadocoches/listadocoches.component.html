@@ -1,0 +1,81 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- matricula -->
+    <ng-container matColumnDef="matricula">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> MATRICULA </th>
+      <td mat-cell *matCellDef="let coche"> {{coche.matricula}} </td>
+    </ng-container>
+
+    <!-- color-->
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> COLOR </th>
+      <td mat-cell *matCellDef="let coche"> {{coche.color}} </td>
+    </ng-container>
+
+    <!-- marca -->
+    <ng-container matColumnDef="marca">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> MARCA </th>
+      <td mat-cell *matCellDef="let coche"> {{coche.marca}} </td>
+    </ng-container>
+
+    <!-- modelo -->
+    <ng-container matColumnDef="modelo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> MODELO </th>
+      <td mat-cell *matCellDef="let coche"> {{coche.modelo}} </td>
+    </ng-container>
+
+      <!--consumo -->
+      <ng-container matColumnDef="consumo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CONSUMO</th>
+        <td mat-cell *matCellDef="let coche"> {{coche.consumo}} </td>
+      </ng-container>
+
+       <!--precio -->
+       <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> PRECIO</th>
+        <td mat-cell *matCellDef="let coche"> {{coche.precio}} </td>
+      </ng-container>
+
+        <!--kms -->
+        <ng-container matColumnDef="kms">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> KILÓMETROS</th>
+          <td mat-cell *matCellDef="let coche"> {{coche.kms}} </td>
+        </ng-container>
+
+          <!--Tipo motor-->
+       <ng-container matColumnDef="tipoMotor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> TIPO DE MOTOR</th>
+        <td mat-cell *matCellDef="let coche"> {{coche.tipoMotor}} </td>
+      </ng-container>
+
+        <!--EDITAR-->
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>EDITAR</th>
+          <td mat-cell *matCellDef="let coche"><button (click)="editarCoche(coche)" >EDITAR</button></td>
+        </ng-container>
+
+          <!--Eliminar -->
+       <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ELIMINAR</th>
+        <td mat-cell *matCellDef="let coche"><button (click)="eliminarCoche(coche)" >ELIMINAR</button> </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
+
