@@ -13,7 +13,9 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import{HttpClientModule} from '@angular/common/http'
+import{HttpClientModule} from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import{HttpClientModule} from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatPaginatorModule,MatInputModule,MatSortModule,MatTableModule,MatFormFieldModule,FormsModule,HttpClientModule
+    MatPaginatorModule,MatInputModule,MatSortModule,MatTableModule,MatFormFieldModule,FormsModule,HttpClientModule,MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

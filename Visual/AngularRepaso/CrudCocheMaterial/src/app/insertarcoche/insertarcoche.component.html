@@ -1,1 +1,50 @@
-<p>insertarcoche works!</p>
+<div mat-dialog-actions>
+<div class="contenedor">
+
+  <h1>
+    Coches
+  </h1>
+  <mat-form-field>
+    <mat-label>Matricula</mat-label>
+    <input matInput [(ngModel)]="data.matricula" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Marca</mat-label>
+    <input matInput [(ngModel)]="data.marca" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Color</mat-label>
+    <input matInput [(ngModel)]="data.color" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Modelo</mat-label>
+    <input matInput [(ngModel)]="data.modelo" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Consumo</mat-label>
+    <input matInput [(ngModel)]="data.consumo" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput [(ngModel)]="data.precio" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>KMS</mat-label>
+    <input matInput [(ngModel)]="data.kms" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>TIPO MOTOR</mat-label>
+    <input matInput [(ngModel)]="data.tipoMotor" />
+  </mat-form-field>
+
+  <button mat-button (click)="Cancelar()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
+</div>

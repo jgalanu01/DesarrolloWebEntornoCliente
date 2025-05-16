@@ -4,6 +4,8 @@ import { Clasecoche } from '../clasecoche';
 import { ServicioCochesService } from '../serviciocoche.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { InsertarcocheComponent } from '../insertarcoche/insertarcoche.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-listadocoches',
@@ -11,15 +13,67 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./listadocoches.component.css'],
 })
 export class ListadocochesComponent {
-  constructor(private http: ServicioCochesService) {
+  coche!: Clasecoche;
+  crearcoche() {
+    const cuadroEmergente = this.cuadroDialogo.open(InsertarcocheComponent, {
+      data: new Clasecoche('', '', '', '', 0, 0, 0, ''),
+    });
+
+    //despues de cerrar el coche
+    cuadroEmergente.afterClosed().subscribe((coche) => {
+      //si hay datos
+      if (coche != undefined) {
+        //llamar al servicio de crearcoche
+        this.http.crearCoche(coche).subscribe((resultado: Clasecoche) => {
+          this.coche = resultado;
+          //Refrescar la tabla
+          this.http.leerCoches().subscribe((x: Clasecoche[]) => {
+            this.dataSource.data = x;
+          });
+        }); //fin de servicio (crear y posteriormente leer)
+      } //coche con datos
+    }); //cerrar el afterclosed (fin del formulario emergente)
+  } //fin de crear coche
+  constructor(
+    public cuadroDialogo: MatDialog,
+    private http: ServicioCochesService
+  ) {
     this.http.leerCoches().subscribe((x: Clasecoche[]) => {
       this.dataSource.data = x;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }
-  eliminarCoche(coche: Clasecoche) {}
-  editarCoche(coche: Clasecoche) {}
+  eliminarCoche(coche: Clasecoche) {
+    if (confirm('Estás seguro de eliminar el coche:' + coche.matricula))
+      this.http.eliminarCoche(coche).subscribe((x: Clasecoche) => {
+        this.http.leerCoches().subscribe((x: Clasecoche[]) => {
+          this.dataSource.data = x;
+        });
+      });
+  }
+  editarCoche(coche: Clasecoche) {
+    const cuadroEmergente = this.cuadroDialogo.open(InsertarcocheComponent, {
+      data: new Clasecoche(coche.matricula,coche.color,coche.marca,coche.modelo,coche.consumo,coche.precio,coche.kms,coche.tipoMotor),
+    });
+
+    //despues de cerrar el coche
+    cuadroEmergente.afterClosed().subscribe(coche => {
+      //si hay datos
+      if (coche != undefined) {
+        //llamar al servicio de crearcoche
+        this.http.modificarCoche(coche).subscribe((resultado: Clasecoche) => {
+          this.coche = resultado;
+          //Refrescar la tabla
+          this.http.leerCoches().subscribe((x: Clasecoche[]) => {
+            this.dataSource.data = x;
+          });
+        }); //fin de servicio (crear y posteriormente leer)
+      } //coche con datos
+    }) //cerrar el afterclosed (fin del formulario emergente)
+  } //fin de crear coche
+
+
 
   //View child está en la chuleta de angular material
   @ViewChild(MatPaginator) paginator!: MatPaginator;
