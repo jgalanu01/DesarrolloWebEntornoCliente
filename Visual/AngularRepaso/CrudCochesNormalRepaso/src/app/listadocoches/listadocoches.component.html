@@ -1,24 +1,24 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8">
-      <h3>Listado Coches</h3>
+      <h3>Listado de coches</h3>
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>MATRICULA</th>
-            <th>COLOR</th>
-            <th>MARCA</th>
-            <th>MODELO</th>
-            <th>CONSUMO</th>
-            <th>PRECIO</th>
-            <th>KMS</th>
-            <th>TIPOMOTOR</th>
+            <th>Matricula</th>
+            <th>Color</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Consumo</th>
+            <th>Precio</th>
+            <th>Kms</th>
+            <th>Tipo de motor</th>
             <th>Editar</th>
             <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of listadoCoches">
+          <tr *ngFor="let c of listaDeCoches">
             <td>{{c.matricula}}</td>
             <td>{{c.color}}</td>
             <td>{{c.marca}}</td>
@@ -28,14 +28,14 @@
             <td>{{c.kms}}</td>
             <td>{{c.tipoMotor}}</td>
             <td><button class="btn btn-info" (click)="seleccionar(c)">Seleccionar</button></td>
-            <td><button class="btn btn-success" (click)="eliminar(c)">Eliminar</button></td>
+            <td><button class="btn btn-info" (click)="eliminar(c)">Eliminar</button></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="col-lg-4">
-      <h3>Formulario Insertar/Modificar</h3>
+      <h3>Formulario</h3>
 
       <div class="form-group">
         <label for="matricula">Matricula</label>
