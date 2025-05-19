@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <h3>Listado de futbolistas</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Equipo</th>
+            <th>Nacionalidad</th>
+            <th>Edad</th>
+            <th>Dorsal</th>
+            <th>Goles</th>
+            <th>Seleccionar</th>
+            <th>ELiminar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let f of listadoFutbolistas">
+            <td>{{f.nombre}}</td>
+            <td>{{f.equipo}}</td>
+            <td>{{f.nacionalidad}}</td>
+            <td>{{f.edad}}</td>
+            <td>{{f.dorsal}}</td>
+            <td>{{f.goles}}</td>
+            <td><button class="btn btn-info" (click)="seleccionar(f)">Seleccionar</button></td>
+            <td><button class="btn btn-danger" (click)="eliminar(f)">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-lg-4">
+      <h3>Formulario insertar modificar</h3>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" placeholder="Teclea el nombre" [(ngModel)]="futbolistaSeleccionado.nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="equipo">Equipo</label>
+        <input type="text" class="form-control" placeholder="Teclea el equipo" [(ngModel)]="futbolistaSeleccionado.equipo">
+      </div>
+
+      <div class="form-group">
+        <label for="nacionalidad">Nacionalidad</label>
+        <input type="text" class="form-control" placeholder="Teclea la nacionalidad" [(ngModel)]="futbolistaSeleccionado.nacionalidad">
+      </div>
+
+      <div class="form-group">
+        <label for="edad">Edad</label>
+        <input type="text" class="form-control" placeholder="Teclea la edad" [(ngModel)]="futbolistaSeleccionado.edad">
+      </div>
+
+      <div class="form-group">
+        <label for="dorsal">Dorsal</label>
+        <input type="text" class="form-control" placeholder="Teclea el dorsal" [(ngModel)]="futbolistaSeleccionado.dorsal">
+      </div>
+
+      <div class="form-group">
+        <label for="goles">Goles</label>
+        <input type="text" class="form-control" placeholder="Teclea los goles" [(ngModel)]="futbolistaSeleccionado.goles">
+      </div>
+
+      <button class="btn btn-info" (click)="modificar()">Modificar</button>
+      <button class="btn btn-danger" (click)="crear()">Crear</button>
+    </div>
+  </div>
+
+</div>

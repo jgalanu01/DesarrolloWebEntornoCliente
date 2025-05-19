@@ -9,17 +9,17 @@ import { ServicioCochesService } from '../servicio-coches.service';
 })
 export class ListadoCochesComponent {
 modificarCoche() {
-  this.http.modificarCoche(this.cocheSeleccionado).subscribe((x:Clasecoche)=>{
+  this.http.modificarCoche(this.cocheSeleccionado).subscribe(()=>{
     this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
   })
 }
 crearCoche() {
-  return this.http.crearCoche(this.cocheSeleccionado).subscribe((x:Clasecoche)=>{
+  this.http.crearCoche(this.cocheSeleccionado).subscribe(()=>{
     this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
   })
 
 }
-  
+
 listadoCoches!:Clasecoche[];
 cocheSeleccionado:Clasecoche={
   matricula:'',
@@ -32,7 +32,7 @@ cocheSeleccionado:Clasecoche={
   tipoMotor: ''
 }
 eliminar(c: Clasecoche) {
- this.http.eliminarCoche(c).subscribe((x:Clasecoche)=>{
+ this.http.eliminarCoche(c).subscribe(()=>{
    this.http.leerCoches().subscribe(x=>this.listadoCoches=x);
    alert ("Coche/s eliminado/s");
  })

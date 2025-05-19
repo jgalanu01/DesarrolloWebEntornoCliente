@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <h3>Listado de Personajes de Star Wars</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Afiliación</th>
+            <th>Rango</th>
+            <th>Color de sable</th>
+            <th>Especie</th>
+            <th>Profesión</th>
+            <th>Seleccionar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let p of listadoPersonajes">
+            <td>{{p.nombre}}</td>
+            <td>{{p.afiliacion}}</td>
+            <td>{{p.rango}}</td>
+            <td>{{p.sableColor}}</td>
+            <td>{{p.especie}}</td>
+            <td>{{p.profesion}}</td>
+
+            <td><button class="btn btn-info" (click)="seleccionar(p)">Seleccionar</button></td>
+            <td><button class="btn btn-danger" (click)="eliminar(p)">Eliminar </button></td>
+
+
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-lg-4">
+      <h3>Formulario Crear modificar</h3>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" placeholder="Teclea nombre" [(ngModel)]="personajeSeleccionado.nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="afiliacion">Afiliación</label>
+        <input type="text" class="form-control" placeholder="Teclea afiliacion" [(ngModel)]="personajeSeleccionado.afiliacion">
+      </div>
+
+      <div class="form-group">
+        <label for="rango">Rango</label>
+        <input type="text" class="form-control" placeholder="Teclea rango" [(ngModel)]="personajeSeleccionado.rango">
+      </div>
+
+      <div class="form-group">
+        <label for="sableColor">Color del sable</label>
+        <input type="text" class="form-control" placeholder="Teclea color del sable" [(ngModel)]="personajeSeleccionado.sableColor">
+      </div>
+
+      <div class="form-group">
+        <label for="especie">Especie</label>
+        <input type="text" class="form-control" placeholder="Teclea especie" [(ngModel)]="personajeSeleccionado.especie">
+      </div>
+
+      <div class="form-group">
+        <label for="profesion">Profesion</label>
+        <input type="text" class="form-control" placeholder="Teclea profesion" [(ngModel)]="personajeSeleccionado.profesion">
+      </div>
+
+      <button class="btn btn-danger" (click)="crear()">Crear</button>
+      <button class="btn btn-info" (click)="modificar()">Modificar</button>
+    </div>
+
+  </div>
+
+</div>

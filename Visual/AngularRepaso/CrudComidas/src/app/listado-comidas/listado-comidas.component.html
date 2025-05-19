@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <h3>Listado de comidas</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Procedencia</th>
+            <th>Temperatura</th>
+            <th>Tipo</th>
+            <th>Popularidad</th>
+            <th>Seleccionar</th>
+            <th>Eliminar</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let c of listadoComidas">
+            <td>{{c.nombre}}</td>
+            <td>{{c.procedencia}}</td>
+            <td>{{c.temperatura}}</td>
+            <td>{{c.tipo}}</td>
+            <td>{{c.popularidad}}</td>
+            <td><button class="btn btn-info" (click)="seleccionar(c)">Seleccionar</button></td>
+            <td><button class="btn btn-danger" (click)="eliminar(c)">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-lg-4">
+      <h3>Formulario insertar-modificar</h3>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" placeholder="Teclea nombre" [(ngModel)]="comidaSeleccionada.nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="procedencia">Procedencia</label>
+        <input type="text" class="form-control" placeholder="Teclea procedencia" [(ngModel)]="comidaSeleccionada.procedencia">
+      </div>
+
+      <div class="form-group">
+        <label for="Temperatura">Temperatura</label>
+        <input type="text" class="form-control" placeholder="Teclea temperatura" [(ngModel)]="comidaSeleccionada.temperatura">
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <input type="text" class="form-control" placeholder="Teclea tipo" [(ngModel)]="comidaSeleccionada.tipo">
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Popularidad</label>
+        <input type="text" class="form-control" placeholder="Teclea popularidad" [(ngModel)]="comidaSeleccionada.popularidad">
+      </div>
+
+      <button class="btn btn-info" (click)="modificar()">Modificar</button>
+      <button class="btn btn-danger" (click)="crear()">Crear</button>
+    </div>
+  </div>
+
+</div>

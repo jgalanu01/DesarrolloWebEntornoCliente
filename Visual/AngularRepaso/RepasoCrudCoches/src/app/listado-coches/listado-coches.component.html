@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+    <h3>Listado Coches</h3>
+    <table class="table table-bordered">
+
+
+    <thead>
+      <tr>
+        <th>Matricula</th>
+        <th>Color</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Consumo</th>
+        <th>Precio</th>
+        <th>Kilometros</th>
+        <th>Tipo de motor</th>
+        <th>Seleccionar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of listadoCoches">
+        <td>{{c.matricula}}</td>
+        <td>{{c.color}}</td>
+        <td>{{c.marca}}</td>
+        <td>{{c.modelo}}</td>
+        <td>{{c.consumo}}</td>
+        <td>{{c.precio}}</td>
+        <td>{{c.kms}}</td>
+        <td>{{c.tipoMotor}}</td>
+        <td><button class="btn btn-info" (click)="seleccionar(c)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="eliminar(c)">Eliminar</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="col-lg-4">
+    <h3>Formulario crear y modificar</h3>
+
+    <div class="form-group">
+      <label for="matricula">Matricula</label>
+      <input type="text" name="matricula" id="matricula" class="form-control" placeholder="teclea matricula" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.matricula">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Color</label>
+      <input type="text" name="color" id="color" class="form-control" placeholder="teclea color" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.color">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Marca</label>
+      <input type="text" name="marca" id="marca" class="form-control" placeholder="teclea marca" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.marca">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Modelo</label>
+      <input type="text" name="modelo" id="modelo" class="form-control" placeholder="teclea modelo" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.modelo">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Consumo</label>
+      <input type="text" name="consumo" id="consumo" class="form-control" placeholder="teclea consumo" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.consumo">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Precio</label>
+      <input type="text" name="precio" id="precio" class="form-control" placeholder="teclea precio" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.precio">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Kilometros</label>
+      <input type="text" name="kms" id="kms" class="form-control" placeholder="teclea Kilometros" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.kms">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <div class="form-group">
+      <label for="matricula">Tipo de motor</label>
+      <input type="text" name="tipoMotor" id="tipoMotor" class="form-control" placeholder="teclea tipo de motor" aria-describedby="helpId" [(ngModel)]="cocheSeleccionado.tipoMotor">
+      <small id="helpId" class="text-muted">Error</small>
+    </div>
+
+    <button class="btn btn-danger" (click)="crearCoche()">Crear</button>
+    <button class="btn btn-info" (click)="modificarCoche()">Modificar</button>
+
+
+  </div>
+
+  </div>
+</div>
