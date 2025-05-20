@@ -17,17 +17,17 @@ export class ServicioPersonajesService {
   }
 
   eliminarPersonajes(personaje:Personajes){
-    return this.httpClient.post<Personajes>
+    return this.httpClient.post<Personajes[]>
     ('http://localhost/serviciosStarwars/eliminarPersonajes.php',personaje)
   }
 
   crearPersonaje(personaje:Personajes){
-    return this.httpClient.post<Personajes>
+    return this.httpClient.post<Personajes[]>
     ('http://localhost/serviciosStarwars/insertarPersonajes.php',personaje)
   }
 
   modificarPersonaje(personaje:Personajes){
-    return this.httpClient.post<Personajes>
+    return this.httpClient.post<Personajes[]>
     ('http://localhost/serviciosStarwars/editarPersonaje.php',personaje)
   }
 }

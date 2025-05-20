@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListadoFutbolistasComponent } from './listado-futbolistas/listado-futbolistas.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ListadoFutbolistaComponent } from './listado-futbolista/listado-futbolista.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoFutbolistasComponent
+    ListadoFutbolistaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+   HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

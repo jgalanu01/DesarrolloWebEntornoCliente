@@ -1,4 +1,4 @@
-export class Futbolistas {
+export class Futbolista {
   nombre!:string;
   equipo!:string;
   nacionalidad!:string;
